@@ -22,7 +22,7 @@ public class Bongden extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("chooser.fxml"));
         Scene scene= new Scene(root);
         String css=bongden.Bongden.class.getResource("app.css").toExternalForm();
         scene.getStylesheets().add(css);
