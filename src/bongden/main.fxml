@@ -6,6 +6,7 @@
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,276 +14,301 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="1200.0" style="-fx-background-color: #FFFAFA;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.MainController">
-   <children>
-      <Pane prefHeight="94.0" prefWidth="225.0" style="-fx-border-color: black;">
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.MainController">
+   <content>
+      <AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="1212.0" style="-fx-background-color: #FFFAFA;">
          <children>
-            <Label fx:id="lblTen" layoutX="100.0" layoutY="5.0" prefHeight="18.0" prefWidth="103.0" text="Nguyễn văn A" />
-            <Label fx:id="lblSodt" layoutX="100.0" layoutY="38.0" prefHeight="18.0" prefWidth="103.0" text="4021499" />
-            <Label fx:id="lblSon" layoutX="100.0" layoutY="71.0" prefHeight="18.0" prefWidth="96.0" text="8" />
-            <ImageView fitHeight="94.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/blue-user-icon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="78.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/58450277-people-icon.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="22.0" fitWidth="21.0" layoutX="78.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/vector-icon-bieu-tuong-dien-thoai-03-4369.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true">
-               <image>
-                  <Image url="@pic/start.png" />
-               </image></ImageView>
-            <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#insertData" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
-         </children>
-      </Pane>
-      <Pane layoutX="5.0" layoutY="228.0" prefHeight="250.0" prefWidth="252.0" style="-fx-border-color: #EFEECB;">
-         <children>
-            <Label alignment="TOP_CENTER" layoutX="41.0" layoutY="7.0" prefHeight="45.0" prefWidth="170.0" text="Tỷ lệ lỗi theo công đoạn" textAlignment="RIGHT">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <PieChart fx:id="pieTyle" labelLineLength="10.0" layoutX="19.0" layoutY="30.0" prefHeight="209.0" prefWidth="215.0" />
-         </children>
-      </Pane>
-      <Pane layoutY="489.0" prefHeight="260.0" prefWidth="258.0" style="-fx-border-color: #EFEECB;">
-         <children>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="38.0" prefHeight="45.0" prefWidth="170.0" text="Thông tin lỗi" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <PieChart fx:id="pieThongtin" layoutX="22.0" layoutY="26.0" prefHeight="209.0" prefWidth="215.0" />
-         </children>
-      </Pane>
-      <SplitPane dividerPositions="0.5" layoutX="265.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+            <Pane prefHeight="94.0" prefWidth="225.0" style="-fx-border-color: black;">
                <children>
-                  <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="Số lệnh" />
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblSolenh" layoutX="41.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
-               </children></AnchorPane>
-        </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="411.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="24.0" prefHeight="18.0" prefWidth="81.0" text="Số lô" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblSolo" layoutX="46.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="560.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="24.0" layoutY="-1.0" prefHeight="18.0" prefWidth="81.0" text="Đơn hàng" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblDonhang" layoutX="44.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="411.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="21.0" prefHeight="18.0" prefWidth="89.0" text="SL hoàn thành" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblSlhoanthanh" layoutX="51.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="265.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="SL đầu vào" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblSlvao" layoutX="49.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="560.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="17.0" prefHeight="18.0" prefWidth="96.0" text="Tỷ lệ lỗi V.tư" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblLoivtu" layoutX="39.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="708.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="26.0" layoutY="-2.0" prefHeight="18.0" prefWidth="81.0" text="Kế hoạch" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblKehoach" layoutX="40.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <SplitPane dividerPositions="0.5" layoutX="708.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="Tỉ lệ lỗi" />
-               </children></AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
-               <children>
-                  <Label fx:id="lblTileloi" layoutX="51.0" text="Label" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-      <ImageView fitHeight="113.0" fitWidth="179.0" layoutX="982.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@pic/rangdong.jpg" />
-         </image>
-      </ImageView>
-      <Pane layoutX="116.0" layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
-         <children>
-            <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
-            <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true">
-               <image>
-                  <Image url="@pic/stop.png" />
-               </image></ImageView>
-         </children>
-      </Pane>
-      <Pane layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
-         <children>
-            <Button fx:id="btnReset" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Reset" textFill="#050505" />
-            <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true">
-               <image>
-                  <Image url="@pic/reset.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="116.0" layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
-         <children>
-            <Button fx:id="btnStart1" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Setting" textAlignment="CENTER" textFill="#050505" underline="true" />
-            <ImageView fx:id="btnSetting" fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="6.0" pickOnBounds="true">
-               <image>
-                  <Image url="@pic/setting.png" />
-               </image></ImageView>
-         </children>
-      </Pane>
-      <SplitPane dividerPositions="0.13143872113676733" layoutX="265.0" layoutY="39.0" prefHeight="35.0" prefWidth="573.0" style="-fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid; -fx-border-color: #EFEECB;">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FFB6C1;">
-               <children>
-                  <Label layoutX="13.0" layoutY="2.0" />
-                  <Label layoutX="13.0" layoutY="3.0" prefHeight="18.0" prefWidth="53.0" text="Tên sp" />
+                  <Label fx:id="lblTen" layoutX="100.0" layoutY="5.0" prefHeight="18.0" prefWidth="103.0" text="Nguyễn văn A" />
+                  <Label fx:id="lblSodt" layoutX="100.0" layoutY="38.0" prefHeight="18.0" prefWidth="103.0" text="4021499" />
+                  <Label fx:id="lblSon" layoutX="100.0" layoutY="71.0" prefHeight="18.0" prefWidth="96.0" text="8" />
+                  <ImageView fitHeight="94.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/blue-user-icon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="78.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/58450277-people-icon.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="21.0" layoutX="78.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/vector-icon-bieu-tuong-dien-thoai-03-4369.jpg" />
+                     </image>
+                  </ImageView>
                </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            </Pane>
+            <Pane layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
-                  <Label alignment="TOP_CENTER" layoutX="12.0" layoutY="-1.0" prefHeight="18.0" prefWidth="462.0" text="LED BulB">
+                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@pic/start.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#insertData" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
+               </children>
+            </Pane>
+            <Pane layoutX="5.0" layoutY="228.0" prefHeight="250.0" prefWidth="252.0" style="-fx-border-color: #EFEECB;">
+               <children>
+                  <Label alignment="TOP_CENTER" layoutX="41.0" layoutY="7.0" prefHeight="45.0" prefWidth="170.0" text="Tỷ lệ lỗi theo công đoạn" textAlignment="RIGHT">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="pieTyle" labelLineLength="10.0" layoutX="19.0" layoutY="30.0" prefHeight="209.0" prefWidth="215.0" />
+               </children>
+            </Pane>
+            <Pane layoutY="489.0" prefHeight="260.0" prefWidth="258.0" style="-fx-border-color: #EFEECB;">
+               <children>
+                  <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="38.0" prefHeight="45.0" prefWidth="170.0" text="Thông tin lỗi" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="pieThongtin" layoutX="22.0" layoutY="26.0" prefHeight="209.0" prefWidth="215.0" />
+               </children>
+            </Pane>
+            <SplitPane dividerPositions="0.5" layoutX="265.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="Số lệnh" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblSolenh" layoutX="41.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="411.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="24.0" prefHeight="18.0" prefWidth="81.0" text="Số lô" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblSolo" layoutX="46.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="560.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="24.0" layoutY="-1.0" prefHeight="18.0" prefWidth="81.0" text="Đơn hàng" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblDonhang" layoutX="44.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="411.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="21.0" prefHeight="18.0" prefWidth="89.0" text="SL hoàn thành" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblSlhoanthanh" layoutX="51.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="265.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="SL đầu vào" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblSlvao" layoutX="49.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="560.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="17.0" prefHeight="18.0" prefWidth="96.0" text="Tỷ lệ lỗi V.tư" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblLoivtu" layoutX="39.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="708.0" layoutY="130.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="26.0" layoutY="-2.0" prefHeight="18.0" prefWidth="81.0" text="Kế hoạch" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblKehoach" layoutX="40.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.5" layoutX="708.0" layoutY="185.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="132.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="25.0" prefHeight="18.0" prefWidth="81.0" text="Tỉ lệ lỗi" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
+                     <children>
+                        <Label fx:id="lblTileloi" layoutX="51.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <ImageView fitHeight="113.0" fitWidth="179.0" layoutX="982.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pic/rangdong.jpg" />
+               </image>
+            </ImageView>
+            <Pane layoutX="116.0" layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
+               <children>
+                  <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
+                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@pic/stop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
+               <children>
+                  <Button fx:id="btnReset" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Reset" textFill="#050505" />
+                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@pic/reset.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="116.0" layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
+               <children>
+                  <Button fx:id="btnStart1" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Setting" textAlignment="CENTER" textFill="#050505" underline="true" />
+                  <ImageView fx:id="btnSetting" fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="6.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@pic/setting.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <SplitPane dividerPositions="0.13143872113676733" layoutX="265.0" layoutY="39.0" prefHeight="35.0" prefWidth="573.0" style="-fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid; -fx-border-color: #EFEECB;">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label layoutX="13.0" layoutY="2.0" />
+                        <Label layoutX="13.0" layoutY="3.0" prefHeight="18.0" prefWidth="53.0" text="Tên sp" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" layoutX="12.0" layoutY="-1.0" prefHeight="18.0" prefWidth="462.0" text="LED BulB">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <Pane layoutX="265.0" prefHeight="35.0" prefWidth="573.0" style="-fx-background-color: #FFB6C1; -fx-border-color: #EFEECB; -fx-border-style: solid; -fx-border-width: 1;">
+               <children>
+                  <Label alignment="TOP_CENTER" layoutX="8.0" layoutY="1.0" prefHeight="18.0" prefWidth="557.0" text="DÂY CHUYỀN LẮP RÁP SẢN PHẨM #2">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
                </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <Pane layoutX="265.0" prefHeight="35.0" prefWidth="573.0" style="-fx-background-color: #FFB6C1; -fx-border-color: #EFEECB; -fx-border-style: solid; -fx-border-width: 1;">
-         <children>
-            <Label alignment="TOP_CENTER" layoutX="8.0" layoutY="1.0" prefHeight="18.0" prefWidth="557.0" text="DÂY CHUYỀN LẮP RÁP SẢN PHẨM #2">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <SplitPane dividerPositions="0.31196581196581197" layoutX="265.0" layoutY="84.0" prefHeight="35.0" prefWidth="244.0" style="-fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid; -fx-border-color: #EFEECB;">
-         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FFB6C1;">
+            </Pane>
+            <SplitPane dividerPositions="0.31196581196581197" layoutX="265.0" layoutY="84.0" prefHeight="35.0" prefWidth="244.0" style="-fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid; -fx-border-color: #EFEECB;">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FFB6C1;">
+                     <children>
+                        <Label layoutX="13.0" layoutY="2.0" />
+                        <Label layoutX="13.0" layoutY="3.0" prefHeight="18.0" prefWidth="53.0" text="Mã sp" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="101.0">
+                     <children>
+                        <Label layoutX="45.0" layoutY="4.0" text="012481284" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <Pane layoutX="520.0" layoutY="79.0" prefHeight="45.0" prefWidth="319.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 2; -fx-border-style: solid; -fx-border-width: 2;">
                <children>
-                  <Label layoutX="13.0" layoutY="2.0" />
-                  <Label layoutX="13.0" layoutY="3.0" prefHeight="18.0" prefWidth="53.0" text="Mã sp" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="6.0" prefHeight="18.0" prefWidth="237.0" text="Lưu ý của nhà sản xuất" />
                </children>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="101.0">
+            </Pane>
+            <Pane layoutX="950.0" layoutY="185.0" prefHeight="565.0" prefWidth="244.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid;">
                <children>
-                  <Label layoutX="45.0" layoutY="4.0" text="012481284" />
+                  <Label layoutX="3.0" layoutY="2.0" prefHeight="18.0" prefWidth="70.0" text="Trạng thái" />
+                  <Label layoutX="3.0" layoutY="60.0" prefHeight="18.0" prefWidth="132.0" text="Thời gian bắt đầu SX" />
+                  <Pane layoutX="3.0" layoutY="84.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="127.0" prefHeight="18.0" prefWidth="179.0" text="Thời gian chạy /    Dừng máy " />
+                  <Pane layoutX="3.0" layoutY="151.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Pane layoutX="100.0" layoutY="151.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="192.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
+                  <Pane layoutX="3.0" layoutY="218.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Pane layoutX="100.0" layoutY="218.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="263.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
+                  <Pane layoutX="3.0" layoutY="290.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="334.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
+                  <Pane layoutX="3.0" layoutY="361.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="179.0" text="Tổng lỗi" />
+                  <Pane layoutX="3.0" layoutY="438.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
                </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
-      <Pane layoutX="520.0" layoutY="79.0" prefHeight="45.0" prefWidth="319.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 2; -fx-border-style: solid; -fx-border-width: 2;">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="6.0" prefHeight="18.0" prefWidth="237.0" text="Lưu ý của nhà sản xuất" />
+            </Pane>
+            <Pane layoutX="297.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+               <children>
+                  <PieChart fx:id="pieKehoach" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Kế hoạch" />
+               </children>
+            </Pane>
+            <Pane layoutX="509.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+               <children>
+                  <PieChart fx:id="pieThoigian" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Thời gian" />
+               </children>
+            </Pane>
+            <Pane layoutX="722.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+               <children>
+                  <PieChart fx:id="pieHopcach" labelLineLength="10.0" layoutX="-8.0" layoutY="-1.0" prefHeight="224.0" prefWidth="215.0" title="Hợp cách" />
+               </children>
+            </Pane>
+            <StackedBarChart fx:id="barBieudo" layoutX="271.0" layoutY="456.0" prefHeight="301.0" prefWidth="676.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
          </children>
-      </Pane>
-      <Pane layoutX="950.0" layoutY="185.0" prefHeight="565.0" prefWidth="244.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 2; -fx-border-width: 2; -fx-border-style: solid;">
-         <children>
-            <Label layoutX="3.0" layoutY="2.0" prefHeight="18.0" prefWidth="70.0" text="Trạng thái" />
-            <Label layoutX="3.0" layoutY="60.0" prefHeight="18.0" prefWidth="132.0" text="Thời gian bắt đầu SX" />
-            <Pane layoutX="3.0" layoutY="84.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="127.0" prefHeight="18.0" prefWidth="179.0" text="Thời gian chạy /    Dừng máy " />
-            <Pane layoutX="3.0" layoutY="151.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Pane layoutX="100.0" layoutY="151.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="192.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
-            <Pane layoutX="3.0" layoutY="218.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Pane layoutX="100.0" layoutY="218.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="263.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
-            <Pane layoutX="3.0" layoutY="290.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="334.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
-            <Pane layoutX="3.0" layoutY="361.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="179.0" text="Tổng lỗi" />
-            <Pane layoutX="3.0" layoutY="438.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-            <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
-         </children></Pane>
-      <Pane layoutX="297.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
-         <children>
-            <PieChart fx:id="pieKehoach" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Kế hoạch" />
-         </children></Pane>
-      <Pane layoutX="509.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
-         <children>
-            <PieChart fx:id="pieThoigian" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Thời gian" />
-         </children>
-      </Pane>
-      <Pane layoutX="722.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
-         <children>
-            <PieChart fx:id="pieHopcach" labelLineLength="10.0" layoutX="-8.0" layoutY="-1.0" prefHeight="224.0" prefWidth="215.0" title="Hợp cách" />
-         </children>
-      </Pane>
-      <StackedBarChart fx:id="barBieudo" layoutX="271.0" layoutY="456.0" prefHeight="301.0" prefWidth="676.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </StackedBarChart>
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </content>
+</ScrollPane>
