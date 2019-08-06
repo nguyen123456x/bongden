@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -34,6 +35,8 @@ public class DangnhapController implements Initializable {
     private Button btnDangnhap;
     @FXML
     private Button btnDoiMk;
+    @FXML
+    private Label lblTrangthai;
      private Connection con;
     private Statement st;
     private ResultSet rs;
@@ -56,6 +59,8 @@ public class DangnhapController implements Initializable {
             rs=st.executeQuery(querry);
             if(rs.next()){
                 System.out.println("1");
+            }else{
+                lblTrangthai.setText("Sai tên đăng nhập hoặc mật khẩu");
             }
         } catch (Exception e) {
             System.out.println("error "+ e);
