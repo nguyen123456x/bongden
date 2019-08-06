@@ -42,4 +42,13 @@ public class ChooserController implements Initializable {
         a.setScene(scene);
         a.show();
     }
+    public void btnClick1() throws IOException {
+        Stage a = new Stage();
+        Parent root=FXMLLoader.load(getClass().getResource("dangnhap.fxml"));
+        Scene scene= new Scene(root);
+        String css=bongden.Bongden.class.getResource("app.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        a.setScene(scene);
+        a.show();
+    }
 }
