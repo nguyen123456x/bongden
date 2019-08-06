@@ -12,7 +12,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnVao" layoutX="377.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnClick" prefHeight="44.0" prefWidth="69.0" text="vào" />
+      <Button fx:id="btnVao" layoutX="367.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnClick" prefHeight="44.0" prefWidth="69.0" text="vào" />
       <Button contentDisplay="TOP" layoutX="156.0" layoutY="141.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="86.0" text="nhập dữ liệu" />
+      <Button layoutX="266.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnClick1" prefHeight="44.0" prefWidth="69.0" text="Admin" />
    </children>
 </AnchorPane>
