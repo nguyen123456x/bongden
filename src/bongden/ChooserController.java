@@ -41,6 +41,8 @@ public class ChooserController implements Initializable {
         scene.getStylesheets().add(css);
         a.setScene(scene);
         a.show();
+        
+        
     }
     public void btnClick1() throws IOException {
         Stage a = new Stage();
@@ -50,5 +52,6 @@ public class ChooserController implements Initializable {
         scene.getStylesheets().add(css);
         a.setScene(scene);
         a.show();
+        
     }
 }

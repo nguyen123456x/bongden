@@ -19,7 +19,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import bongden.property;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
