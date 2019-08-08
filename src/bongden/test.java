@@ -32,7 +32,7 @@ private Connection con;
             }
 
         } catch (Exception e) {
-            System.out.println("loi cai lon me maay " + e);
+            System.out.println("loi" + e);
         }
     }
 }
