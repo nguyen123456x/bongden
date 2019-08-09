@@ -13,16 +13,17 @@ import java.sql.Statement;
  *
  * @author DLC
  */
-public class test { 
+/*ublic class test { 
 private Connection con;
     private Statement st;
     private ResultSet rs;
-    public void button(){
+   /* public void button(){
     try {
             connection c = new connection();
             Connection connect = c.dbConnect();
-            st=con.createStatement();
-            rs=st.executeQuery("SELECT*FROM`nguoivan`");
+             String querry1="SELECT* FROM `nguoivan`";
+            st=connect.createStatement();
+            rs=st.executeQuery(querry1);
             while (rs.next()) {
                 String id=rs.getString("id");
                 String tennv=rs.getString("tenNv");
@@ -36,3 +37,4 @@ private Connection con;
         }
     }
 }
+*/

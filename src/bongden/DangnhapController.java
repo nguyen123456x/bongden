@@ -61,7 +61,6 @@ public class DangnhapController implements Initializable {
             user = txtTk.getText();
             pass = psMk.getText();
             String querry = "SELECT* FROM `admin` WHERE tenTk='" + user + "' AND mKhau='" + pass + "'";
-            
             st = connect.createStatement();
             rs = st.executeQuery(querry);
             if (rs.next()) {

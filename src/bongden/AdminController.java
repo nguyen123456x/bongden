@@ -111,7 +111,8 @@ public class AdminController implements Initializable {
         try {
             connection c = new connection();
             Connection connect = c.dbConnect();
-            rs=con.createStatement().executeQuery("SELECT* FROM `nguoivan`");
+            st=connect.createStatement();
+            rs=st.executeQuery("SELECT*FROM`nguoivan`");
             while (rs.next()) {
                 int id=rs.getInt("id");
                 int sodt=rs.getInt("soDt");
@@ -121,7 +122,7 @@ public class AdminController implements Initializable {
             }
 
         } catch (Exception e) {
-            System.out.println("loi cai lon me maay " + e);
+            System.out.println("loi" + e);
         }
         tabShow.setItems(data);
 

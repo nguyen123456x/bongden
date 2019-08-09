@@ -30,7 +30,7 @@ class User {
         return tenNv;
     }
 
-    public IntegerProperty idProperty() {
+    public IntegerProperty iDProperty() {
         return id;
     }
 
@@ -41,34 +41,28 @@ class User {
     public IntegerProperty SoDtProperty() {
         return soDt;
     }
-
     public String getTenNv(){
         return tenNv.get();
-    
     }
     public int getId(){
         return id.get();
     }
-     public int getSoDt(){
+    public int getSoDt(){
         return soDt.get();
     }
-      public int getSoNhan(){
+     public int getSoNhan(){
         return soNhan.get();
     }
-    public void setTenNv(String v) {
-        tenNv.setValue(v);
-    }
-
-    public void setId(String v) {
-        tenNv.setValue(v);
-    }
-
-    public void setSoNhan(String v) {
-        tenNv.setValue(v);
-    }
-
-    public void setSoDt(String v) {
-        tenNv.setValue(v);
-    }
-    
+     public void setTenNv(String value){
+         tenNv.set(value);
+     }
+      public void setSodt(int value){
+         soDt.set(value);
+     }
+      public void setSoNhanh(int value){
+         soNhan.set(value);
+     } 
+       public void setId(int value){
+         id.set(value);
+     }
 }
