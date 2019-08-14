@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -20,15 +18,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="142.0" text="Họ và tên" />
+                        <Label fx:id="lblTen" layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="142.0" text="Họ và tên" />
                         <TextField fx:id="txtTt" layoutX="11.0" layoutY="66.0" />
-                        <Label layoutX="15.0" layoutY="106.0" prefHeight="17.0" prefWidth="142.0" text="Số điện thoại" />
+                        <Label fx:id="lblSdt" layoutX="15.0" layoutY="106.0" prefHeight="17.0" prefWidth="142.0" text="Số điện thoại" />
                         <TextField fx:id="txtTsdt" layoutX="12.0" layoutY="136.0" />
-                        <Label layoutX="15.0" layoutY="177.0" prefHeight="17.0" prefWidth="142.0" text="Số nhân công" />
+                        <Label fx:id="lblSn" layoutX="15.0" layoutY="177.0" prefHeight="17.0" prefWidth="142.0" text="Số nhân công" />
                         <TextField fx:id="txtTn" layoutX="12.0" layoutY="211.0" />
                         <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" onAction="#ThemnvClick" prefHeight="38.0" prefWidth="61.0" text="Thêm" />
-                        <Button layoutX="202.0" layoutY="204.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Hủy" />
-                        <Label fx:id="lblTt" layoutX="15.0" layoutY="256.0" prefHeight="17.0" prefWidth="158.0" textFill="#ff0101" />
+                        <Button layoutX="202.0" layoutY="204.0" mnemonicParsing="false" onAction="#clearTxt" prefHeight="40.0" prefWidth="64.0" text="Hủy" />
+                        <Label fx:id="lblTt" layoutX="15.0" layoutY="309.0" prefHeight="17.0" prefWidth="158.0" textFill="#ff0101" />
                         <ScrollPane layoutX="283.0" prefHeight="372.0" prefWidth="317.0">
                            <content>
                               <TableView fx:id="tabShow" prefHeight="371.0" prefWidth="305.0">
@@ -41,45 +39,14 @@
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <Button layoutX="201.0" layoutY="141.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Xóa" />
+                        <Button layoutX="201.0" layoutY="141.0" mnemonicParsing="false" onAction="#deleteData" prefHeight="40.0" prefWidth="64.0" text="Xóa" />
+                        <Button layoutX="204.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateData" prefHeight="38.0" prefWidth="61.0" text="Sửa" />
+                        <TextField fx:id="txtId" layoutX="11.0" layoutY="272.0" />
+                        <Label fx:id="lblTen1" layoutX="14.0" layoutY="248.0" prefHeight="17.0" prefWidth="142.0" text="ID" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Đổi mật khẩu">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="29.0" layoutY="60.0" prefHeight="17.0" prefWidth="130.0" text="Mật khẩu cũ" />
-                        <Label layoutX="29.0" layoutY="123.0" prefHeight="17.0" prefWidth="130.0" text="Mật khẩu mới" />
-                        <Label layoutX="29.0" layoutY="192.0" prefHeight="17.0" prefWidth="130.0" text="Nhập lại mật khẩu" />
-                        <PasswordField fx:id="psMkc" layoutX="29.0" layoutY="85.0" />
-                        <PasswordField fx:id="psMkm" layoutX="29.0" layoutY="153.0" />
-                        <PasswordField fx:id="psNl" layoutX="29.0" layoutY="222.0" />
-                        <Button layoutX="210.0" layoutY="153.0" mnemonicParsing="false" text="Đồng ý" />
-                        <Button layoutX="210.0" layoutY="197.0" mnemonicParsing="false" text="Hủy bỏ" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Sửa thông tin">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="193.0" layoutY="55.0" prefHeight="17.0" prefWidth="142.0" text="Họ và tên" />
-                        <TextField fx:id="txtSt" layoutX="193.0" layoutY="72.0" />
-                        <Label layoutX="193.0" layoutY="124.0" prefHeight="17.0" prefWidth="142.0" text="Số điện thoại" />
-                        <TextField fx:id="txtSsdt" layoutX="193.0" layoutY="141.0" />
-                        <Label layoutX="193.0" layoutY="197.0" prefHeight="17.0" prefWidth="142.0" text="Số nhân công" />
-                        <TextField fx:id="txtSn" layoutX="193.0" layoutY="214.0" />
-                        <Button layoutX="278.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="Lưu" />
-                        <Button layoutX="162.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Hủy" />
-                        <ChoiceBox layoutX="194.0" layoutY="14.0" prefHeight="25.0" prefWidth="151.0" />
-                        <Button layoutX="377.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="64.0" text="Xóa" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
    </children>

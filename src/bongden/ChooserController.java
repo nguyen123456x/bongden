@@ -42,7 +42,6 @@ public class ChooserController implements Initializable {
         a.setScene(scene);
         a.show();
         
-        
     }
     public void btnClick1() throws IOException {
         Stage a = new Stage();

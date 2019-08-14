@@ -5,6 +5,7 @@ package bongden;
  * @author DLC
  *
  */
+import java.awt.Panel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,6 +23,7 @@ public class connection {
             st=con.createStatement();
         } catch (Exception e) {
             System.out.println("error"+ e);
+            
         }
      return con;
     }

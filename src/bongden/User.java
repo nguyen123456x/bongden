@@ -14,10 +14,10 @@ import javafx.beans.property.StringProperty;
  *
  * @author DLC
  */
-class User {
+public class User {
 
-    private final StringProperty tenNv;
-    private final IntegerProperty id, soNhan, soDt;
+    public  StringProperty tenNv;
+    public  IntegerProperty id, soNhan, soDt;
 
     public User(int id, int soDt, int soNhan, String tenNv) {
         this.id = new SimpleIntegerProperty(id);
