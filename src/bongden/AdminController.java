@@ -134,7 +134,7 @@ public class AdminController implements Initializable {
             st = connect.createStatement();
             rs = st.executeQuery("SELECT*FROM`nguoivan`");
             while (rs.next()) {
-                int id = rs.getInt("id");
+                int id = rs.getInt("idNv");
                 int sodt = rs.getInt("soDt");
                 int sonhan = rs.getInt("soNhan");
                 String tennv = rs.getString("tenNv");
@@ -149,7 +149,7 @@ public class AdminController implements Initializable {
     }
 
     public void deleteData(ActionEvent event) {
-        String sql = "DELETE FROM `nguoivan` WHERE id='" + txtId.getText() + "'";
+        String sql = "DELETE FROM `nguoivan` WHERE idNv='" + txtId.getText() + "'";
         try {
             connection c = new connection();
             Connection connect = c.dbConnect();
@@ -168,7 +168,7 @@ public class AdminController implements Initializable {
         try {
             connection c = new connection();
             Connection connect = c.dbConnect();
-            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "'WHERE id='" + txtId.getText() + "'";
+            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "'WHERE idNv='" + txtId.getText() + "'";
             st = connect.createStatement();
             st.executeUpdate(sql);
             if (st.executeUpdate(sql) == 1) {
@@ -222,7 +222,7 @@ public class AdminController implements Initializable {
         try {
             st=connect.createStatement();
              if(mkm.equals(nl)){
-                 st.executeUpdate("UPDATE `admin` SET mKhau='" + psMkm.getText() + "'WHERE id=?");
+                 st.executeUpdate("UPDATE `admin` SET mKhau='" + psMkm.getText() + "'WHERE idAd=?");
                  lblTt1.setText("Đổi mật khẩu thành công");
         }
 
