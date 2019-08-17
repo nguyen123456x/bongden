@@ -118,6 +118,7 @@ public class MainController implements Initializable {
                 lblSlvao.setText(sLvao);
                 lblSlhoanthanh.setText(sLhoanthanh);
                 lblTileloi.setText(tiLeloi);
+                
                   ObservableList<PieChart.Data> list2=FXCollections.observableArrayList(
          new PieChart.Data("Kế hoạch",sLht ),
          new PieChart.Data("Còn lại", keH-sLht)

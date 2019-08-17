@@ -283,6 +283,31 @@
                   <Label layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="179.0" text="Tổng lỗi" />
                   <Pane layoutX="3.0" layoutY="438.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
+                  <Label alignment="CENTER" layoutX="24.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="1">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="2">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="93.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="3">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="123.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="4">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="165.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="5">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="297.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
