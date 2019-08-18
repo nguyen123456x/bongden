@@ -44,6 +44,10 @@ public class AdminController implements Initializable {
     private TextField txtTn;
     @FXML
     private TextField txtSt;
+     @FXML
+    private TextField txtTk;
+      @FXML
+    private TextField txtMk;
     @FXML
     private TextField txtId;
     @FXML
@@ -60,6 +64,10 @@ public class AdminController implements Initializable {
     public TableColumn<User, Integer> colId;
     @FXML
     public TableColumn<User, String> colTenNv;
+    @FXML
+    public TableColumn<User, String> colTk;
+    @FXML
+    public TableColumn<User, String> colMk;
     @FXML
     public TableColumn<User, Integer> colSodt;
     @FXML
@@ -97,7 +105,7 @@ public class AdminController implements Initializable {
         Connection connect = c.dbConnect();
 
         try {
-            String sql = "INSERT INTO `nguoivan`(`tenNv`, `soDt`, `soNhan`) VALUES ('" + txtTt.getText() + "','" + txtTsdt.getText() + "','" + txtTn.getText() + "')";
+            String sql = "INSERT INTO `nguoivan`(`tenNv`, `soDt`, `soNhan`,`tenTk`,`matKhau`) VALUES ('" + txtTt.getText() + "','" + txtTsdt.getText() + "','" + txtTn.getText() + "','" + txtTk.getText() + "','" + txtMk.getText() + "')";
             st = connect.createStatement();
             st.executeUpdate(sql);
             lblTt.setText("Thêm thành công");
@@ -118,6 +126,8 @@ public class AdminController implements Initializable {
             colTenNv.setCellValueFactory(new PropertyValueFactory<User, String>("tenNv"));
             colSodt.setCellValueFactory(new PropertyValueFactory<User, Integer>("soDt"));
             colSoNhan.setCellValueFactory(new PropertyValueFactory<User, Integer>("soNhan"));
+            colTk.setCellValueFactory(new PropertyValueFactory<User, String>("tenTk"));
+            colMk.setCellValueFactory(new PropertyValueFactory<User, String>("matKhau"));
             tabShow.setItems(data);
         } catch (Exception e) {
 
@@ -138,7 +148,9 @@ public class AdminController implements Initializable {
                 int sodt = rs.getInt("soDt");
                 int sonhan = rs.getInt("soNhan");
                 String tennv = rs.getString("tenNv");
-                data.add(new User(id, sodt, sonhan, tennv));
+                String tentk=rs.getString("tenTk");
+                String  matkhau=rs.getString("matKhau");
+                data.add(new User(id, sodt, sonhan, tennv, tentk, matkhau));
             }
 
         } catch (Exception e) {
@@ -168,7 +180,7 @@ public class AdminController implements Initializable {
         try {
             connection c = new connection();
             Connection connect = c.dbConnect();
-            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "'WHERE idNv='" + txtId.getText() + "'";
+            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "',tenTk='" + txtTk.getText() + "',matKhau='" + txtMk.getText() + "'WHERE idNv='" + txtId.getText() + "'";
             st = connect.createStatement();
             st.executeUpdate(sql);
             if (st.executeUpdate(sql) == 1) {
@@ -192,6 +204,8 @@ public class AdminController implements Initializable {
                 txtTsdt.setText(String.valueOf(us.getSoDt()));
                 txtTn.setText(String.valueOf(us.getSoNhan()));
                 txtId.setText(String.valueOf(us.getId()));
+                txtTk.setText(us.getTenTk());
+                txtMk.setText(us.getMatKhau());
             }
 
         });
@@ -203,6 +217,8 @@ public class AdminController implements Initializable {
         txtTsdt.clear();
         txtId.clear();
         txtTt.clear();
+        txtMk.clear();
+        txtTk.clear();
 
     }
      public void clearPass() {
