@@ -33,6 +33,7 @@ public class DangnhapController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @FXML
     private PasswordField psMkc;
     @FXML
@@ -83,13 +84,14 @@ public class DangnhapController implements Initializable {
                 scene.getStylesheets().add(css);
                 a.setScene(scene);
                 a.show();
+                
 
             } else {
                 lblTrangthai.setText("Sai tên đăng nhập hoặc mật khẩu");
             }
 
         } catch (Exception e) {
-            System.out.println("error " + e);
+            System.out.println("error111 " + e);
         }
 
     }

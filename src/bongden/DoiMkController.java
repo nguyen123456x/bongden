@@ -68,6 +68,8 @@ public class DoiMkController implements Initializable {
             if (mkm.equals(nl)) {
                 st.executeUpdate("UPDATE `admin` SET mKhau='" + psMkm.getText() + "'WHERE tenTk='" + cbTen.getSelectionModel().getSelectedItem().toString() + "'");
                 lblTt1.setText("Đổi mật khẩu thành công");
+            }else{
+              lblTt1.setText("nhập mật khẩu mới không trùng nhau");
             }
 
         } catch (Exception e) {
