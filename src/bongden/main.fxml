@@ -16,38 +16,38 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.MainController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="1212.0" style="-fx-background-color: #FFFAFA;">
+      <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="781.0" prefWidth="1212.0" style="-fx-background-color: #FFFAFA;">
          <children>
             <Pane prefHeight="94.0" prefWidth="225.0" style="-fx-border-color: black;">
                <children>
-                  <Label fx:id="lblTen" layoutX="100.0" layoutY="5.0" prefHeight="18.0" prefWidth="103.0" text="Nguyễn văn A" />
+                  <Label fx:id="lblTen" layoutX="78.0" layoutY="5.0" prefHeight="18.0" prefWidth="103.0" text="Nguyễn văn A" />
                   <Label fx:id="lblSodt" layoutX="100.0" layoutY="38.0" prefHeight="18.0" prefWidth="103.0" text="4021499" />
                   <Label fx:id="lblSon" layoutX="100.0" layoutY="71.0" prefHeight="18.0" prefWidth="96.0" text="8" />
-                  <ImageView fitHeight="94.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="84.0" fitWidth="73.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/blue-user-icon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="78.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@pic/58450277-people-icon.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="21.0" layoutX="78.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="72.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/vector-icon-bieu-tuong-dien-thoai-03-4369.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="72.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/58450277-people-icon.jpg" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
             <Pane layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
-                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true">
+                  <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
+                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/start.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#insertData" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
                </children>
             </Pane>
             <Pane layoutX="5.0" layoutY="228.0" prefHeight="250.0" prefWidth="252.0" style="-fx-border-color: #EFEECB;">
@@ -182,15 +182,10 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <ImageView fitHeight="113.0" fitWidth="179.0" layoutX="982.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/rangdong.jpg" />
-               </image>
-            </ImageView>
             <Pane layoutX="116.0" layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
                   <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
-                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true">
+                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/stop.png" />
                      </image>
@@ -200,7 +195,7 @@
             <Pane layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
                   <Button fx:id="btnReset" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Reset" textFill="#050505" />
-                  <ImageView fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="5.0" pickOnBounds="true">
+                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="11.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/reset.png" />
                      </image>
@@ -210,7 +205,7 @@
             <Pane layoutX="116.0" layoutY="141.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
                   <Button fx:id="btnStart1" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed;" text="Setting" textAlignment="CENTER" textFill="#050505" underline="true" />
-                  <ImageView fx:id="btnSetting" fitHeight="32.0" fitWidth="34.0" layoutX="9.0" layoutY="6.0" pickOnBounds="true">
+                  <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/setting.png" />
                      </image>
@@ -283,6 +278,31 @@
                   <Label layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="179.0" text="Tổng lỗi" />
                   <Pane layoutX="3.0" layoutY="438.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
+                  <Label alignment="CENTER" layoutX="24.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="1">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="2">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="93.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="3">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="123.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="4">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="165.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="5">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane layoutX="297.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
@@ -308,6 +328,11 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </StackedBarChart>
+            <ImageView fitHeight="150.0" fitWidth="243.0" layoutX="950.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pic/rangdong.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

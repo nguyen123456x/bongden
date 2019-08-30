@@ -21,13 +21,15 @@ import javafx.stage.Stage;
 public class Bongden extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage a) throws IOException {
+        Stage primaryStage=new Stage();
         Parent root=FXMLLoader.load(getClass().getResource("chooser.fxml"));
         Scene scene= new Scene(root);
         String css=bongden.Bongden.class.getResource("app.css").toExternalForm();
         scene.getStylesheets().add(css);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**

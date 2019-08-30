@@ -14,22 +14,29 @@ import javafx.beans.property.StringProperty;
  *
  * @author DLC
  */
-class User {
+public class User {
 
-    private final StringProperty tenNv;
-    private final IntegerProperty id, soNhan, soDt;
+    public StringProperty tenNv, tenTk, matKhau;
+    public IntegerProperty id, soNhan, soDt;
 
-    public User(int id, int soDt, int soNhan, String tenNv) {
+    public User(int id, int soDt, int soNhan, String tenNv, String tenTk, String matKhau) {
         this.id = new SimpleIntegerProperty(id);
         this.soDt = new SimpleIntegerProperty(soDt);
         this.soNhan = new SimpleIntegerProperty(soNhan);
         this.tenNv = new SimpleStringProperty(tenNv);
+        this.tenTk = new SimpleStringProperty(tenTk);
+        this.matKhau = new SimpleStringProperty(matKhau);
     }
 
     public StringProperty TenNvProperty() {
         return tenNv;
     }
-
+ public StringProperty TenTkProperty() {
+        return tenTk;
+    }
+  public StringProperty MatKhauProperty() {
+        return matKhau;
+    }
     public IntegerProperty iDProperty() {
         return id;
     }
@@ -41,28 +48,46 @@ class User {
     public IntegerProperty SoDtProperty() {
         return soDt;
     }
-    public String getTenNv(){
+
+    public String getTenNv() {
         return tenNv.get();
     }
-    public int getId(){
+     public String getTenTk() {
+        return tenTk.get();
+    }
+      public String getMatKhau() {
+        return matKhau.get();
+    }
+    public int getId() {
         return id.get();
     }
-    public int getSoDt(){
+
+    public int getSoDt() {
         return soDt.get();
     }
-     public int getSoNhan(){
+
+    public int getSoNhan() {
         return soNhan.get();
     }
-     public void setTenNv(String value){
-         tenNv.set(value);
-     }
-      public void setSodt(int value){
-         soDt.set(value);
-     }
-      public void setSoNhanh(int value){
-         soNhan.set(value);
-     } 
-       public void setId(int value){
-         id.set(value);
-     }
+
+    public void setTenNv(String value) {
+        tenNv.set(value);
+    }
+    public void setTenTk(String value) {
+        tenTk.set(value);
+    }
+    public void setMatKhau(String value) {
+        matKhau.set(value);
+    }
+    public void setSodt(int value) {
+        soDt.set(value);
+    }
+
+    public void setSoNhanh(int value) {
+        soNhan.set(value);
+    }
+
+    public void setId(int value) {
+        id.set(value);
+    }
 }

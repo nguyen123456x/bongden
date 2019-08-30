@@ -22,7 +22,8 @@ import javafx.stage.Stage;
  * @author DLC
  */
 public class ChooserController implements Initializable {
-
+ 
+   
     @FXML
     private Button btnVao;
 
@@ -35,7 +36,7 @@ public class ChooserController implements Initializable {
     }    
     public void btnClick() throws IOException {
         Stage a = new Stage();
-        Parent root=FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("DNNV.fxml"));
         Scene scene= new Scene(root);
         String css=bongden.Bongden.class.getResource("app.css").toExternalForm();
         scene.getStylesheets().add(css);

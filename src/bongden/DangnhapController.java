@@ -5,11 +5,13 @@
  */
 package bongden;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +33,14 @@ public class DangnhapController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    @FXML
+    private PasswordField psMkc;
+    @FXML
+    private PasswordField psMkm;
+    @FXML
+    private PasswordField psNl;
+
     @FXML
     private TextField txtTk;
     @FXML
@@ -41,6 +51,8 @@ public class DangnhapController implements Initializable {
     private Button btnDoiMk;
     @FXML
     private Label lblTrangthai;
+    @FXML
+    private Label lblTt1;
     private Connection con;
     private Statement st;
     private ResultSet rs;
@@ -72,14 +84,26 @@ public class DangnhapController implements Initializable {
                 scene.getStylesheets().add(css);
                 a.setScene(scene);
                 a.show();
+                
 
             } else {
                 lblTrangthai.setText("Sai tên đăng nhập hoặc mật khẩu");
             }
-           
+
         } catch (Exception e) {
-            System.out.println("error " + e);
+            System.out.println("error111 " + e);
         }
 
     }
+    public void btn(ActionEvent event) throws IOException{
+                Stage a = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("doiMk.fxml"));
+                Scene scene = new Scene(root);
+                String css = bongden.Bongden.class.getResource("app.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                a.setScene(scene);
+                a.show();
+    
+    }
+    
 }
