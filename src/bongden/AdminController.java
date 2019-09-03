@@ -37,6 +37,8 @@ public class AdminController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
+    private Label lblidad;
+    @FXML
     private TextField txtTt;
     @FXML
     private TextField txtTsdt;
@@ -44,9 +46,12 @@ public class AdminController implements Initializable {
     private TextField txtTn;
      @FXML
     private TextField txtTk;
+     @FXML
     private TextField txtMk;
     @FXML
     private TextField txtId;
+     @FXML
+    private TextField txtIdad;
     private PasswordField psMkc;
     private PasswordField psMkm;
     @FXML
@@ -63,6 +68,8 @@ public class AdminController implements Initializable {
     public TableColumn<User, Integer> colSodt;
     @FXML
     public TableColumn<User, Integer> colSoNhan;
+    @FXML
+    public TableColumn<User, Integer> colIdad;
     private PasswordField psNl;
     @FXML
     private Label lblTt;
@@ -75,7 +82,6 @@ public class AdminController implements Initializable {
     private Label lblSn;
     private Connection con;
     private Statement st;
-    private PreparedStatement pst;
     private ResultSet rs;
     public ObservableList<User> data;
     @FXML
@@ -97,7 +103,7 @@ public class AdminController implements Initializable {
         Connection connect = c.dbConnect();
 
         try {
-            String sql = "INSERT INTO `nguoivan`(`tenNv`, `soDt`, `soNhan`,`tenTk`,`matKhau`) VALUES ('" + txtTt.getText() + "','" + txtTsdt.getText() + "','" + txtTn.getText() + "','" + txtTk.getText() + "','" + txtMk.getText() + "')";
+            String sql = "INSERT INTO `nguoivan`(`tenNv`, `soDt`, `soNhan`,`tenTk`,`matKhau`,`idAd`) VALUES ('" + txtTt.getText() + "','" + txtTsdt.getText() + "','" + txtTn.getText() + "','" + txtTk.getText() + "','" + txtMk.getText() + "','" + txtIdad.getText() + "')";
             st = connect.createStatement();
             st.executeUpdate(sql);
             lblTt.setText("Thêm thành công");
@@ -120,6 +126,7 @@ public class AdminController implements Initializable {
             colSoNhan.setCellValueFactory(new PropertyValueFactory<User, Integer>("soNhan"));
             colTk.setCellValueFactory(new PropertyValueFactory<User, String>("tenTk"));
             colMk.setCellValueFactory(new PropertyValueFactory<User, String>("matKhau"));
+            colIdad.setCellValueFactory(new PropertyValueFactory<User, Integer>("idad"));
             tabShow.setItems(data);
         } catch (Exception e) {
 
@@ -134,7 +141,7 @@ public class AdminController implements Initializable {
             connection c = new connection();
             Connection connect = c.dbConnect();
             st = connect.createStatement();
-            rs = st.executeQuery("SELECT*FROM`nguoivan`");
+            rs = st.executeQuery("SELECT *  FROM `nguoivan`");
             while (rs.next()) {
                 int id = rs.getInt("idNv");
                 int sodt = rs.getInt("soDt");
@@ -142,7 +149,8 @@ public class AdminController implements Initializable {
                 String tennv = rs.getString("tenNv");
                 String tentk=rs.getString("tenTk");
                 String  matkhau=rs.getString("matKhau");
-                data.add(new User(id, sodt, sonhan, tennv, tentk, matkhau));
+                int idad= rs.getInt("idAd");
+                data.add(new User(id, sodt, sonhan, tennv, tentk, matkhau,idad));
             }
 
         } catch (Exception e) {
@@ -173,7 +181,7 @@ public class AdminController implements Initializable {
         try {
             connection c = new connection();
             Connection connect = c.dbConnect();
-            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "',tenTk='" + txtTk.getText() + "',matKhau='" + txtMk.getText() + "'WHERE idNv='" + txtId.getText() + "'";
+            String sql = "UPDATE `nguoivan` SET tenNv='" + txtTt.getText() + "', soDt='" + txtTsdt.getText() + "',soNhan='" + txtTn.getText() + "',tenTk='" + txtTk.getText() + "',matKhau='" + txtMk.getText() + "',idAd='" + txtIdad.getText() +"'WHERE idNv='" + txtId.getText() + "'";
             st = connect.createStatement();
             st.executeUpdate(sql);
             if (st.executeUpdate(sql) == 1) {
@@ -191,14 +199,19 @@ public class AdminController implements Initializable {
         tabShow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
-                User us = tabShow.getItems().get(tabShow.getSelectionModel().getSelectedIndex());
+                try {
+                    User us = tabShow.getItems().get(tabShow.getSelectionModel().getSelectedIndex());
                 txtTt.setText(us.getTenNv());
                 txtTsdt.setText(String.valueOf(us.getSoDt()));
                 txtTn.setText(String.valueOf(us.getSoNhan()));
                 txtId.setText(String.valueOf(us.getId()));
                 txtTk.setText(us.getTenTk());
                 txtMk.setText(us.getMatKhau());
+                txtIdad.setText(String.valueOf(us.getIdad()));
+                } catch (Exception e) {
+                    System.out.println("loixaj"+e);
+                }
+                
             }
 
         });
@@ -213,6 +226,7 @@ public class AdminController implements Initializable {
         txtTt.clear();
         txtMk.clear();
         txtTk.clear();
+        txtIdad.clear();
 
     }
      public void clearPass() {
@@ -240,5 +254,9 @@ public class AdminController implements Initializable {
             System.out.println("error12412"+e);
         }
        
+    }
+    public void getAd(String ad){
+        this.lblidad.setText(ad);
+    
     }
 }

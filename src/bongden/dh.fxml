@@ -47,6 +47,7 @@
                         <Label layoutX="15.0" layoutY="228.0" text="ID" />
                         <DatePicker fx:id="dBd" layoutX="14.0" layoutY="158.0" />
                         <DatePicker fx:id="dHt" layoutX="14.0" layoutY="204.0" />
+                        <Label fx:id="lblTt" layoutX="13.0" layoutY="284.0" prefHeight="17.0" prefWidth="173.0" textFill="#f80202" />
                      </children>
                   </AnchorPane>
             </content>

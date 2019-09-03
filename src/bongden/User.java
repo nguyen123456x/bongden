@@ -17,15 +17,16 @@ import javafx.beans.property.StringProperty;
 public class User {
 
     public StringProperty tenNv, tenTk, matKhau;
-    public IntegerProperty id, soNhan, soDt;
+    public IntegerProperty id, soNhan, soDt,idad;
 
-    public User(int id, int soDt, int soNhan, String tenNv, String tenTk, String matKhau) {
+    public User(int id, int soDt, int soNhan, String tenNv, String tenTk, String matKhau,int idad) {
         this.id = new SimpleIntegerProperty(id);
         this.soDt = new SimpleIntegerProperty(soDt);
         this.soNhan = new SimpleIntegerProperty(soNhan);
         this.tenNv = new SimpleStringProperty(tenNv);
         this.tenTk = new SimpleStringProperty(tenTk);
         this.matKhau = new SimpleStringProperty(matKhau);
+        this.idad= new SimpleIntegerProperty(idad);
     }
 
     public StringProperty TenNvProperty() {
@@ -40,7 +41,9 @@ public class User {
     public IntegerProperty iDProperty() {
         return id;
     }
-
+  public IntegerProperty idadProperty() {
+        return idad;
+    }
     public IntegerProperty SoNhanProperty() {
         return soNhan;
     }
@@ -61,7 +64,9 @@ public class User {
     public int getId() {
         return id.get();
     }
-
+public int getIdad() {
+        return idad.get();
+    }
     public int getSoDt() {
         return soDt.get();
     }
@@ -81,6 +86,9 @@ public class User {
     }
     public void setSodt(int value) {
         soDt.set(value);
+    }
+     public void setIdad(int value) {
+        idad.set(value);
     }
 
     public void setSoNhanh(int value) {

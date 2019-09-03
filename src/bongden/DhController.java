@@ -112,55 +112,48 @@ public class DhController implements Initializable {
 
     }
 
-    public DatePicker getdBd() {
-        return dBd;
-    }
-
-    public void setdBd(DatePicker dBd) {
-        this.dBd = dBd;
-    }
-
-    public DatePicker getdHt() {
-        return dHt;
-    }
-
-    public void setdHt(DatePicker dHt) {
-        this.dHt = dHt;
-    }
-
     @FXML
-    private void clearTxt(ActionEvent event) {
+    private void clearTxt() {
+        txtId.clear();
+        txtKh.clear();
+        txtTdh.clear();
     }
 
     @FXML
     private void deleteData(ActionEvent event) {
-        Date a = new Date(2015, 10, 2);
-        Date b = new Date(2015, 12, 2);
-        int id = 7;
-        String tendh = "XJ5K";
-        int keh = 50000;
-        connection c = new connection();
-        Connection connect = c.dbConnect();
+        String sql = "DELETE FROM `donhang` WHERE idDh='" + txtId.getText() + "'";
         try {
-
-            String sql = "INSERT INTO `donhang`(`idDh`, `tenDh`, `keHoach`,`tgBatdau`,`tgHoanthanh`) VALUES ('" + id + "','" + tendh + "','" + keh + "','" + a + "','" + b + "')";
+            connection c = new connection();
+            Connection connect = c.dbConnect();
             st = connect.createStatement();
             st.executeUpdate(sql);
-            lblTt.setText("Thêm thành công");
-            System.out.println("ag");
-            setCelltable();
+            lblTt.setText("Xóa thành công");
             loadData();
+            clearTxt();
 
         } catch (Exception e) {
-            lblTt.setText("Nhập đầy đủ thông tin");
-            System.out.println("error " + e);
-
+            System.out.println("loi xoa");
         }
-
     }
 
     @FXML
     private void updateData(ActionEvent event) {
+ try {
+       LocalDate a = dBd.getValue();
+            LocalDate b = dHt.getValue();
+            connection c = new connection();
+            Connection connect = c.dbConnect();
+            String sql = "UPDATE `donhang` SET tenDh='" + txtTdh.getText() + "', keHoach='" + txtKh.getText() + "',tgBatdau='" + a + "',tgHoanthanh='" + b + "'WHERE idDh='" + txtId.getText() + "'";
+            st = connect.createStatement();
+            st.executeUpdate(sql);
+            if (st.executeUpdate(sql) == 1) {
+                lblTt.setText("Sửa thành công");
+                setCelltable();
+                loadData();
+            }
+        } catch (Exception e) {
+            System.out.println("error 223" + e);
+        }
 
     }
 

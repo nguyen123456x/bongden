@@ -77,12 +77,20 @@ public class DangnhapController implements Initializable {
             rs = st.executeQuery(querry);
             if (rs.next()) {
                 System.out.println("1");
-                Stage a = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("admin.fxml"));
-                Scene scene = new Scene(root);
-                String css = bongden.Bongden.class.getResource("app.css").toExternalForm();
-                scene.getStylesheets().add(css);
-                a.setScene(scene);
+                String idAd = rs.getString(("idAd"));
+                FXMLLoader loader= new FXMLLoader();
+                loader.setLocation(getClass().getResource("admin.fxml"));
+                try {
+                    loader.load();
+                } catch (Exception e) {
+                    System.out.println("error loader"+e);
+                }
+                AdminController mc= loader.getController();
+                mc.getAd(idAd);
+                System.out.println("bongden.DNNVController.dangNhap()222");
+                Parent p = loader.getRoot();
+                Stage a= new Stage();
+                a.setScene(new Scene(p));
                 a.show();
                 
 

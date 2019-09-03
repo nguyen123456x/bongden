@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.AdminController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="418.0" prefWidth="809.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Thêm người vận">
             <content>
@@ -26,10 +26,10 @@
                         <TextField fx:id="txtTn" layoutX="11.0" layoutY="158.0" />
                         <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" onAction="#ThemnvClick" prefHeight="38.0" prefWidth="61.0" text="Thêm" />
                         <Button layoutX="202.0" layoutY="204.0" mnemonicParsing="false" onAction="#clearTxt" prefHeight="40.0" prefWidth="64.0" text="Hủy" />
-                        <Label fx:id="lblTt" layoutX="15.0" layoutY="324.0" prefHeight="17.0" prefWidth="158.0" textFill="#ff0101" />
-                        <ScrollPane layoutX="283.0" prefHeight="372.0" prefWidth="464.0">
+                        <Label fx:id="lblTt" layoutX="171.0" layoutY="346.0" prefHeight="17.0" prefWidth="105.0" textFill="#ff0101" />
+                        <ScrollPane layoutX="283.0" prefHeight="391.0" prefWidth="527.0">
                            <content>
-                              <TableView fx:id="tabShow" prefHeight="371.0" prefWidth="453.0">
+                              <TableView fx:id="tabShow" prefHeight="389.0" prefWidth="526.0">
                                 <columns>
                                   <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
                                   <TableColumn fx:id="colTenNv" prefWidth="75.0" text="Họ và tên" />
@@ -37,6 +37,7 @@
                                     <TableColumn fx:id="colSoNhan" prefWidth="75.0" text="Số nhân công" />
                                     <TableColumn fx:id="colTk" prefWidth="75.0" text="Tên tài khoản" />
                                     <TableColumn fx:id="colMk" prefWidth="75.0" text="Mật khẩu" />
+                                    <TableColumn fx:id="colIdad" prefWidth="75.0" text="IdAd" />
                                 </columns>
                               </TableView>
                            </content>
@@ -49,6 +50,10 @@
                         <Label layoutX="15.0" layoutY="228.0" text="Tên tài khoản" />
                         <TextField fx:id="txtMk" layoutX="12.0" layoutY="291.0" />
                         <Label layoutX="15.0" layoutY="276.0" text="Mật khẩu" />
+                        <TextField fx:id="txtIdad" layoutX="11.0" layoutY="342.0" />
+                        <Label layoutX="15.0" layoutY="316.0" prefHeight="17.0" prefWidth="111.0" text="IDad" />
+                        <Label fx:id="lblidad" layoutX="15.0" layoutY="24.0" prefHeight="17.0" prefWidth="144.0" textFill="#f80000" />
+                        <Label layoutX="15.0" layoutY="6.0" prefHeight="17.0" prefWidth="197.0" text="ID admin đang đăng nhập hệ thống" />
                      </children>
                   </AnchorPane>
             </content>
