@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
@@ -38,6 +39,7 @@
                         <Image url="@pic/58450277-people-icon.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="btnDh" layoutX="161.0" layoutY="11.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="56.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Đơn hàng" textFill="#050505" />
                </children>
             </Pane>
             <Pane layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
@@ -305,17 +307,17 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="297.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+            <Pane layoutX="265.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
                <children>
                   <PieChart fx:id="pieKehoach" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Kế hoạch" />
                </children>
             </Pane>
-            <Pane layoutX="509.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+            <Pane layoutX="506.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
                <children>
                   <PieChart fx:id="pieThoigian" labelLineLength="10.0" layoutX="-7.0" prefHeight="224.0" prefWidth="215.0" title="Thời gian" />
                </children>
             </Pane>
-            <Pane layoutX="722.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
+            <Pane layoutX="740.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
                <children>
                   <PieChart fx:id="pieHopcach" labelLineLength="10.0" layoutX="-8.0" layoutY="-1.0" prefHeight="224.0" prefWidth="215.0" title="Hợp cách" />
                </children>
@@ -333,6 +335,7 @@
                   <Image url="@pic/rangdong.jpg" />
                </image>
             </ImageView>
+            <ComboBox fx:id="cbDh" layoutX="14.0" layoutY="195.0" prefWidth="150.0" promptText="Chọn đơn hàng" />
          </children>
       </AnchorPane>
    </content>

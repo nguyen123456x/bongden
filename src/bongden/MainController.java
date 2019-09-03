@@ -29,6 +29,7 @@ import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import static javax.swing.UIManager.getInt;
 
@@ -62,6 +63,8 @@ public class MainController implements Initializable {
     private Label lblTileloi;
     @FXML
     private Label lblSodt;
+     @FXML
+    private ComboBox cbDh;
     @FXML
     private Label lblSon;
     @FXML
@@ -94,7 +97,7 @@ public class MainController implements Initializable {
     public void getUser(String tenNv,String soDt,String soNhan){
         this.lblTen.setText(tenNv);
         this.lblSodt.setText(soDt);
-      this.  lblSon.setText(soNhan);
+        this.lblSon.setText(soNhan);
     
     }
 }

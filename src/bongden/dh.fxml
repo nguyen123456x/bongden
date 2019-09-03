@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.DhController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="772.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Thêm đơn hàng">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblTen" layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="142.0" text="Tên đơn hàng" />
+                        <TextField fx:id="txtTdh" layoutX="11.0" layoutY="66.0" />
+                        <Label fx:id="lblSdt" layoutX="14.0" layoutY="91.0" prefHeight="17.0" prefWidth="142.0" text="Kế hoạch" />
+                        <TextField fx:id="txtKh" layoutX="11.0" layoutY="110.0" />
+                        <Label fx:id="lblSn" layoutX="14.0" layoutY="141.0" prefHeight="17.0" prefWidth="142.0" text="Thời gian bắt đầu" />
+                        <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" onAction="#ThemnvClick" prefHeight="38.0" prefWidth="61.0" text="Thêm" />
+                        <Button layoutX="202.0" layoutY="204.0" mnemonicParsing="false" onAction="#clearTxt" prefHeight="40.0" prefWidth="64.0" text="Hủy" />
+                        <Label fx:id="lblTt" layoutX="15.0" layoutY="324.0" prefHeight="17.0" prefWidth="158.0" textFill="#ff0101" />
+                        <ScrollPane layoutX="283.0" prefHeight="372.0" prefWidth="489.0">
+                           <content>
+                              <TableView fx:id="tabShow" prefHeight="371.0" prefWidth="477.0">
+                                <columns>
+                                  <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
+                                  <TableColumn fx:id="colTdh" prefWidth="75.0" text="Tên đơn hàng" />
+                                    <TableColumn fx:id="colKh" prefWidth="75.0" text="Kế hoạch" />
+                                    <TableColumn fx:id="colBd" prefWidth="111.0" text="Thời gian bắt đầu" />
+                                    <TableColumn fx:id="colHt" prefWidth="140.0" text="Thời gian hoàn thành" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Button layoutX="201.0" layoutY="141.0" mnemonicParsing="false" onAction="#deleteData" prefHeight="40.0" prefWidth="64.0" text="Xóa" />
+                        <Button layoutX="204.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateData" prefHeight="38.0" prefWidth="61.0" text="Sửa" />
+                        <Label fx:id="lblTen1" layoutX="15.0" layoutY="186.0" prefHeight="17.0" prefWidth="142.0" text="Thời gian hoàn thành" />
+                        <TextField fx:id="txtId" layoutX="12.0" layoutY="244.0" />
+                        <Label layoutX="15.0" layoutY="228.0" text="ID" />
+                        <DatePicker fx:id="dBd" layoutX="14.0" layoutY="158.0" />
+                        <DatePicker fx:id="dHt" layoutX="14.0" layoutY="204.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

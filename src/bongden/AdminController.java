@@ -42,21 +42,12 @@ public class AdminController implements Initializable {
     private TextField txtTsdt;
     @FXML
     private TextField txtTn;
-    @FXML
-    private TextField txtSt;
      @FXML
     private TextField txtTk;
-      @FXML
     private TextField txtMk;
     @FXML
     private TextField txtId;
-    @FXML
-    private TextField txtSsdt;
-    @FXML
-    private TextField txtSn;
-    @FXML
     private PasswordField psMkc;
-    @FXML
     private PasswordField psMkm;
     @FXML
     private TableView<User> tabShow;
@@ -72,13 +63,11 @@ public class AdminController implements Initializable {
     public TableColumn<User, Integer> colSodt;
     @FXML
     public TableColumn<User, Integer> colSoNhan;
-    @FXML
     private PasswordField psNl;
     @FXML
     private Label lblTt;
     @FXML
     private Label lblTen;
-    @FXML
     private Label lblTt1;
     @FXML
     private Label lblSdt;
@@ -89,6 +78,8 @@ public class AdminController implements Initializable {
     private PreparedStatement pst;
     private ResultSet rs;
     public ObservableList<User> data;
+    @FXML
+    private Label lblTen1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,6 +91,7 @@ public class AdminController implements Initializable {
         setCellValueFromTable();
     }
 
+    @FXML
     public void ThemnvClick() {
         connection c = new connection();
         Connection connect = c.dbConnect();
@@ -176,6 +168,7 @@ public class AdminController implements Initializable {
 
     }
 
+    @FXML
     public void updateData(ActionEvent event) {
         try {
             connection c = new connection();
@@ -212,6 +205,7 @@ public class AdminController implements Initializable {
 
     }
 
+    @FXML
     public void clearTxt() {
         txtTn.clear();
         txtTsdt.clear();
