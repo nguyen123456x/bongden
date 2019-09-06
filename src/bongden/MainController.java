@@ -26,8 +26,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
@@ -135,14 +139,25 @@ public class MainController implements Initializable {
                     lblKehoach.setText(String.valueOf(rs.getInt("keHoach")));
                     txtTgbd.setText(rs.getString("tgBatdau"));
                     txtTght.setText(rs.getString("tgHoanthanh"));
-                    /* Date tgbd=rs.getDate("tgBatdau");
-                    Date tght=rs.getDate("tgHoanthanh");
-                       ObservableList<PieChart.Data> list3 = FXCollections.observableArrayList(
-                        new PieChart.Data("Kế hoạch", 1000),
-                        new PieChart.Data("Còn lại", 1000-9)
-                );
-                pieThoigian.setData(list3);*/
-
+                    String tgbd = rs.getString("tgBatdau");
+                    String tght = rs.getString("tgHoanthanh");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate date1 = LocalDate.parse(tgbd, formatter);
+                    LocalDate date2 = LocalDate.parse(tght, formatter);
+                    long elapsedDays = ChronoUnit.DAYS.between(date1, date2);
+                    ObservableList<PieChart.Data> list3 = FXCollections.observableArrayList(
+                            new PieChart.Data("Hạn", elapsedDays),
+                            new PieChart.Data("Tiến độ", elapsedDays-date1.getDayOfMonth())
+                    );
+                    pieThoigian.setData(list3);
+                    for (final PieChart.Data data : pieThoigian.getData()) {
+                        data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
+                            }
+                        });
+                    }
                 }
             } catch (Exception a) {
                 System.out.println("error combo" + a);
@@ -169,6 +184,7 @@ public class MainController implements Initializable {
         lblSolo.setText("1800958298A");
         lblSlvao.setText("1000");
         lblSlhoanthanh.setText("6900");
+        lblLoivtu.setText("0.5");
         double tiLe = 2.5;
         double a = 0;
         double b = 0;
@@ -185,13 +201,13 @@ public class MainController implements Initializable {
                 LocalTime tgra1, tgra2, tgra3, tgra4, tgra5;
                 tgra1 = LocalTime.now();
                 loi1 = getloi();
-                a=a+loi1;
+                a = a + loi1;
                 diem1 = getDiem(loi1, lbl1);
                 tt1 = getTT(diem1);
                 Thread.sleep(500);
                 tgra2 = LocalTime.now();
                 loi2 = getloi();
-                b=b+loi2;
+                b = b + loi2;
                 diem2 = getDiem(loi2, lbl2);
                 tt2 = getTT(diem2);
                 Thread.sleep(500);
@@ -212,7 +228,7 @@ public class MainController implements Initializable {
                 String sql = "UPDATE  `sanpham` SET `tgRa1`='" + tgra1 + "', `loi1`='" + loi1 + "', `diem1`='" + diem1 + "', `trangThai1`='" + tt1 + "', `tgRa2`='" + tgra2 + "', `loi2`='" + loi2 + "', `diem2`='" + diem2 + "', `trangThai2`='" + tt2 + "'"
                         + ", `tgRa3`='" + tgra3 + "', `loi3`='" + loi3 + "', `diem3`='" + diem3 + "', `trangThai3`='" + tt3 + "', `tgRa4`='" + tgra4 + "', `loi4`='" + loi4 + "', `diem4`='" + diem4 + "', `trangThai4`='" + tt4 + "', `tgRa5`='" + tgra5 + "', `loi5`='" + loi5 + "', `diem5`='" + diem5 + "', `trangThai5`='" + tt5 + "' WHERE `idSp`='" + id + "'";
                 st = connect.createStatement();
-              
+
                 System.out.println("ag");
                 lblSlhoanthanh.setText(String.valueOf(id));
                 st.close();
@@ -246,8 +262,8 @@ public class MainController implements Initializable {
                     });
                 }
                 ObservableList<PieChart.Data> list1 = FXCollections.observableArrayList(
-                        new PieChart.Data("Lỗi vật tư ", 60),
-                        new PieChart.Data("Lỗi máy", 163)
+                        new PieChart.Data("Lỗi vật tư ", 1),
+                        new PieChart.Data("Lỗi máy", 199)
                 );
                 pieThongtin.setData(list1);
                 for (final PieChart.Data data : pieThongtin.getData()) {
@@ -259,22 +275,21 @@ public class MainController implements Initializable {
                     });
                 }
             }
-             double d= (a+b);
+            double d = (a + b);
             ObservableList<PieChart.Data> list4 = FXCollections.observableArrayList(
-                        new PieChart.Data("k1 lắp ráp ", a/d),
-                        new PieChart.Data("k2 thử sáng 1", b/d)
-                );
-                pieTyle.setData(list4);
-                for (final PieChart.Data data : pieTyle.getData()) {
-                    data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
-                        }
-                    });
-                }
-           
-            
+                    new PieChart.Data("k1 lắp ráp ", a / d),
+                    new PieChart.Data("k2 thử sáng 1", b / d)
+            );
+            pieTyle.setData(list4);
+            for (final PieChart.Data data : pieTyle.getData()) {
+                data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
+                    }
+                });
+            }
+
         } catch (Exception e) {
             System.out.println("error " + e);
         }
