@@ -9,6 +9,7 @@ import com.mysql.jdbc.PreparedStatement;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -98,11 +99,12 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void ThemnvClick() {
+    public void ThemnvClick() throws SQLException {
         connection c = new connection();
         Connection connect = c.dbConnect();
 
         try {
+            
             String sql = "INSERT INTO `nguoivan`(`tenNv`, `soDt`, `soNhan`,`tenTk`,`matKhau`,`idAd`) VALUES ('" + txtTt.getText() + "','" + txtTsdt.getText() + "','" + txtTn.getText() + "','" + txtTk.getText() + "','" + txtMk.getText() + "','" + txtIdad.getText() + "')";
             st = connect.createStatement();
             st.executeUpdate(sql);
@@ -116,6 +118,7 @@ public class AdminController implements Initializable {
             System.out.println("error " + e);
 
         }
+     
     }
 
     public void setCelltable() {

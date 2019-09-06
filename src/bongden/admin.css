@@ -4,16 +4,19 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Jul 23, 2019, 2:56:30 PM
+    Created on : Sep 6, 2019, 11:25:43 AM
     Author     : DLC
 */
-
 .button{
     -fx-background-color:  #d2e3ed ;
     
 }
 .anchor{
     -fx-background-color:  #FFFAFA;
+}
+.pane{
+    -fx-background-image:url('E:\hinh do an\rang-dong-1612.jpg');
+    
 }
 .textfield{
     -fx-border-style: solid;

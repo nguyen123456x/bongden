@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +18,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bongden.MainController">
    <content>
-      <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="781.0" prefWidth="1212.0" style="-fx-background-color: #FFFAFA;">
+      <AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="1212.0" style="-fx-background-color: #FFFAFA;">
          <children>
             <Pane prefHeight="94.0" prefWidth="225.0" style="-fx-border-color: black;">
                <children>
@@ -39,12 +40,12 @@
                         <Image url="@pic/58450277-people-icon.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnDh" layoutX="161.0" layoutY="11.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="56.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Đơn hàng" textFill="#050505" />
+                  <Button fx:id="btnDh" layoutX="161.0" layoutY="11.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#btnClick2" prefHeight="73.0" prefWidth="56.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Đơn hàng" textFill="#050505" />
                </children>
             </Pane>
             <Pane layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
-                  <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
+                  <Button fx:id="btnStart" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#getdata" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Start" textFill="#050505" />
                   <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="10.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/start.png" />
@@ -81,7 +82,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblSolenh" layoutX="41.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
+                        <Label fx:id="lblSolenh" layoutX="41.0" prefHeight="18.0" prefWidth="53.0" />
                      </children>
                   </AnchorPane>
               </items>
@@ -95,7 +96,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblSolo" layoutX="46.0" prefHeight="18.0" prefWidth="53.0" text="Label" />
+                        <Label fx:id="lblSolo" layoutX="46.0" prefHeight="18.0" prefWidth="53.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -109,7 +110,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblDonhang" layoutX="44.0" text="Label" />
+                        <Label fx:id="lblDonhang" layoutX="44.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -123,7 +124,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblSlhoanthanh" layoutX="51.0" text="Label" />
+                        <Label fx:id="lblSlhoanthanh" layoutX="51.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -137,7 +138,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblSlvao" layoutX="49.0" text="Label" />
+                        <Label fx:id="lblSlvao" layoutX="49.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -151,7 +152,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblLoivtu" layoutX="39.0" text="Label" />
+                        <Label fx:id="lblLoivtu" layoutX="39.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -165,7 +166,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblKehoach" layoutX="40.0" text="Label" />
+                        <Label fx:id="lblKehoach" layoutX="40.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -179,14 +180,14 @@
                   </AnchorPane>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="158.0">
                      <children>
-                        <Label fx:id="lblTileloi" layoutX="51.0" text="Label" />
+                        <Label fx:id="lblTileloi" layoutX="51.0" />
                      </children>
                   </AnchorPane>
                </items>
             </SplitPane>
             <Pane layoutX="116.0" layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
-                  <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
+                  <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#cancelQ" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
                   <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/stop.png" />
@@ -266,45 +267,45 @@
                <children>
                   <Label layoutX="3.0" layoutY="2.0" prefHeight="18.0" prefWidth="70.0" text="Trạng thái" />
                   <Label layoutX="3.0" layoutY="60.0" prefHeight="18.0" prefWidth="132.0" text="Thời gian bắt đầu SX" />
-                  <Pane layoutX="3.0" layoutY="84.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Label layoutX="3.0" layoutY="127.0" prefHeight="18.0" prefWidth="179.0" text="Thời gian chạy /    Dừng máy " />
-                  <Pane layoutX="3.0" layoutY="151.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Pane layoutX="100.0" layoutY="151.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Label layoutX="3.0" layoutY="192.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
-                  <Pane layoutX="3.0" layoutY="218.0" prefHeight="27.0" prefWidth="81.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Pane layoutX="100.0" layoutY="218.0" prefHeight="27.0" prefWidth="130.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Label layoutX="3.0" layoutY="263.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
-                  <Pane layoutX="3.0" layoutY="290.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Label layoutX="3.0" layoutY="334.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
-                  <Pane layoutX="3.0" layoutY="361.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Label layoutX="3.0" layoutY="411.0" prefHeight="18.0" prefWidth="179.0" text="Tổng lỗi" />
-                  <Pane layoutX="3.0" layoutY="438.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="2.0" layoutY="164.0" prefHeight="18.0" prefWidth="179.0" text="Thời gian chạy /    Dừng máy " />
+                  <Label layoutX="2.0" layoutY="235.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
+                  <Label layoutX="4.0" layoutY="331.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
+                  <Label layoutX="3.0" layoutY="415.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
+                  <Pane layoutX="5.0" layoutY="433.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
-                  <Label alignment="CENTER" layoutX="24.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="1">
+                  <Label fx:id="lbl1" alignment="CENTER" layoutX="24.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="1">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="58.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="2">
+                  <Label fx:id="lbl2" alignment="CENTER" layoutX="58.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="2">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="93.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="3">
+                  <Label fx:id="lbl3" alignment="CENTER" layoutX="93.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="3">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="123.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="4">
+                  <Label fx:id="lbl4" alignment="CENTER" layoutX="123.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="4">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="165.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="5">
+                  <Label fx:id="lbl5" alignment="CENTER" layoutX="165.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="5">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="txtTgbd" layoutX="4.0" layoutY="88.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField layoutX="4.0" layoutY="187.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField layoutX="100.0" layoutY="187.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField layoutX="4.0" layoutY="261.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField layoutX="100.0" layoutY="261.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField layoutX="4.0" layoutY="349.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Label layoutX="7.0" layoutY="117.0" prefHeight="18.0" prefWidth="132.0" text="Hạn hoàn thành" />
+                  <TextField fx:id="txtTght" layoutX="4.0" layoutY="135.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                </children>
             </Pane>
             <Pane layoutX="265.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">

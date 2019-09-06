@@ -47,7 +47,7 @@ public class DoiMkController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         connection c = new connection();
         Connection connect = c.dbConnect();
-        fillCombobox();
+            fillCombobox();
     }    
        public void clearPass() {
         psMkc.clear();

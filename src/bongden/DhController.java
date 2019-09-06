@@ -95,7 +95,6 @@ public class DhController implements Initializable {
         try {
             LocalDate a = dBd.getValue();
             LocalDate b = dHt.getValue();
-
             String sql = "INSERT INTO `donhang`(`idDh`, `tenDh`, `keHoach`,`tgBatdau`,`tgHoanthanh`) VALUES ('" + txtId.getText() + "','" + txtTdh.getText() + "','" + txtKh.getText() + "','" + a + "','" + b + "')";
             st = connect.createStatement();
             st.executeUpdate(sql);
@@ -107,9 +106,7 @@ public class DhController implements Initializable {
         } catch (Exception e) {
             lblTt.setText("Nhập đầy đủ thông tin");
             System.out.println("error " + e);
-
         }
-
     }
 
     @FXML
