@@ -19,7 +19,7 @@ import javafx.beans.property.StringProperty;
  */
 public class spProperty {
 
-    public IntegerProperty idSp, diem1, diem2, diem3, diem4, diem5;
+    public IntegerProperty idSp, diem1, diem2, diem3, diem4, diem5, tgra11;
     public DoubleProperty loi1, loi2, loi3, loi4, loi5;
     public StringProperty tt1, tt2, tt3, tt4, tt5;
     public LocalTime tgra1, tgra2, tgra3, tgra4, tgra5;
@@ -47,6 +47,12 @@ public class spProperty {
         this.tgra3 = tgra3;
         this.tgra4 = tgra4;
         this.tgra5 = tgra5;
+    }
+    public spProperty(double loi1,int tgra11){
+        this.loi1=new SimpleDoubleProperty(loi1);
+        this.tgra1=tgra1;
+    
+    
     }
 
     public LocalTime getTgra1() {
@@ -101,6 +107,17 @@ public class spProperty {
         return idSp.get();
     }
 
+       public IntegerProperty tgRa11IntegerProperty() {
+        return tgra11;
+    }
+
+    public void setTgra11(IntegerProperty tgra11) {
+        this.tgra11 = tgra11;
+    }
+
+    public int getTgra11() {
+        return tgra11.get();
+    }
     public IntegerProperty diem1Property() {
         return diem1;
     }

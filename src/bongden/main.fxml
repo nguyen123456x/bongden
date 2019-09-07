@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -187,7 +187,7 @@
             </SplitPane>
             <Pane layoutX="116.0" layoutY="96.0" prefHeight="45.0" prefWidth="109.0" style="-fx-border-color: black;">
                <children>
-                  <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#cancelQ" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
+                  <Button fx:id="btnStop" layoutX="50.0" layoutY="4.0" minHeight="18.0" minWidth="50.0" mnemonicParsing="false" onAction="#stop" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #d2e3ed #d2e3ed;" text="Stop" textFill="#050505" />
                   <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pic/stop.png" />
@@ -267,7 +267,7 @@
                <children>
                   <Label layoutX="3.0" layoutY="2.0" prefHeight="18.0" prefWidth="70.0" text="Trạng thái" />
                   <Label layoutX="3.0" layoutY="60.0" prefHeight="18.0" prefWidth="132.0" text="Thời gian bắt đầu SX" />
-                  <Label layoutX="2.0" layoutY="164.0" prefHeight="18.0" prefWidth="179.0" text="Thời gian chạy /    Dừng máy " />
+                  <Label layoutX="2.0" layoutY="164.0" prefHeight="18.0" prefWidth="212.0" text="Thời gian chạy         /    Dừng máy " />
                   <Label layoutX="2.0" layoutY="235.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
                   <Label layoutX="4.0" layoutY="331.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
                   <Label layoutX="3.0" layoutY="415.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
@@ -299,13 +299,14 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtTgbd" layoutX="4.0" layoutY="88.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <TextField layoutX="4.0" layoutY="187.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <TextField layoutX="100.0" layoutY="187.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <TextField layoutX="4.0" layoutY="261.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <TextField layoutX="100.0" layoutY="261.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <TextField layoutX="4.0" layoutY="349.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="7.0" layoutY="117.0" prefHeight="18.0" prefWidth="132.0" text="Hạn hoàn thành" />
                   <TextField fx:id="txtTght" layoutX="4.0" layoutY="135.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <Button layoutX="122.0" layoutY="14.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="IN BÁO CÁO" />
+                  <Label fx:id="lblTgdung" layoutX="116.0" layoutY="190.0" prefHeight="17.0" prefWidth="120.0" />
+                  <Label fx:id="lblTgchay" layoutX="9.0" layoutY="190.0" prefHeight="17.0" prefWidth="104.0" />
                </children>
             </Pane>
             <Pane layoutX="265.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
@@ -323,20 +324,20 @@
                   <PieChart fx:id="pieHopcach" labelLineLength="10.0" layoutX="-8.0" layoutY="-1.0" prefHeight="224.0" prefWidth="215.0" title="Hợp cách" />
                </children>
             </Pane>
-            <StackedBarChart fx:id="barBieudo" layoutX="271.0" layoutY="456.0" prefHeight="301.0" prefWidth="676.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </StackedBarChart>
             <ImageView fitHeight="150.0" fitWidth="243.0" layoutX="950.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@pic/rangdong.jpg" />
                </image>
             </ImageView>
             <ComboBox fx:id="cbDh" layoutX="14.0" layoutY="195.0" prefWidth="150.0" promptText="Chọn đơn hàng" />
+            <BarChart fx:id="barbieudo" animated="false" barGap="10.0" categoryGap="20.0" layoutX="265.0" layoutY="472.0" prefHeight="296.0" prefWidth="678.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
          </children>
       </AnchorPane>
    </content>

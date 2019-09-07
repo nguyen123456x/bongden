@@ -6,6 +6,7 @@
 package bongden;
 
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -26,25 +27,40 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import static javax.swing.UIManager.getInt;
 
 /**
@@ -108,12 +124,26 @@ public class MainController implements Initializable {
     @FXML
     private Label lbl5;
     @FXML
+    private Label lblTgchay;
+    @FXML
+    private Label lblTgdung;
+    @FXML
     private ProgressIndicator progthoiGian;
     @FXML
     private ProgressIndicator proghopCach;
     @FXML
     private ComboBox dh;
+    @FXML
+    private BarChart<String, Double> barbieudo;
     public ObservableList<dhpro> data;
+    public ObservableList<spProperty> sp;
+    public static int  sec=0;
+    public static int min=0;
+    public static int hour=0;
+    public static int mil=0;
+    public  Timeline timeline;
+    public static boolean state=true;
+    public static boolean state1=true;
     final ObservableList option = FXCollections.observableArrayList();
 
     private Connection con;
@@ -123,10 +153,8 @@ public class MainController implements Initializable {
     // final property a=new property();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         connection c = new connection();
         Connection connect = c.dbConnect();
-
         data = FXCollections.observableArrayList();
         fillCombobox();
 
@@ -147,7 +175,7 @@ public class MainController implements Initializable {
                     long elapsedDays = ChronoUnit.DAYS.between(date1, date2);
                     ObservableList<PieChart.Data> list3 = FXCollections.observableArrayList(
                             new PieChart.Data("Hạn", elapsedDays),
-                            new PieChart.Data("Tiến độ", elapsedDays-date1.getDayOfMonth())
+                            new PieChart.Data("Tiến độ", elapsedDays - date1.getDayOfMonth())
                     );
                     pieThoigian.setData(list3);
                     for (final PieChart.Data data : pieThoigian.getData()) {
@@ -228,52 +256,10 @@ public class MainController implements Initializable {
                 String sql = "UPDATE  `sanpham` SET `tgRa1`='" + tgra1 + "', `loi1`='" + loi1 + "', `diem1`='" + diem1 + "', `trangThai1`='" + tt1 + "', `tgRa2`='" + tgra2 + "', `loi2`='" + loi2 + "', `diem2`='" + diem2 + "', `trangThai2`='" + tt2 + "'"
                         + ", `tgRa3`='" + tgra3 + "', `loi3`='" + loi3 + "', `diem3`='" + diem3 + "', `trangThai3`='" + tt3 + "', `tgRa4`='" + tgra4 + "', `loi4`='" + loi4 + "', `diem4`='" + diem4 + "', `trangThai4`='" + tt4 + "', `tgRa5`='" + tgra5 + "', `loi5`='" + loi5 + "', `diem5`='" + diem5 + "', `trangThai5`='" + tt5 + "' WHERE `idSp`='" + id + "'";
                 st = connect.createStatement();
-
+                Thread.sleep(500);
                 System.out.println("ag");
                 lblSlhoanthanh.setText(String.valueOf(id));
-                st.close();
-                ObservableList<PieChart.Data> list2 = FXCollections.observableArrayList(
-                        new PieChart.Data("Kế hoạch", 1000),
-                        new PieChart.Data("Còn lại", 1000 - 900)
-                );
-                pieKehoach.setData(list2);
 
-                for (final PieChart.Data data : pieKehoach.getData()) {
-                    data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
-                        }
-                    });
-                }
-                lblTileloi.setText(String.valueOf(tiLe));
-                ObservableList<PieChart.Data> list3 = FXCollections.observableArrayList(
-                        new PieChart.Data("Hợp cách", 100 - tiLe),
-                        new PieChart.Data("Còn lại", tiLe)
-                );
-                pieHopcach.setData(list3);
-
-                for (final PieChart.Data data : pieHopcach.getData()) {
-                    data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
-                        }
-                    });
-                }
-                ObservableList<PieChart.Data> list1 = FXCollections.observableArrayList(
-                        new PieChart.Data("Lỗi vật tư ", 1),
-                        new PieChart.Data("Lỗi máy", 199)
-                );
-                pieThongtin.setData(list1);
-                for (final PieChart.Data data : pieThongtin.getData()) {
-                    data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
-                        }
-                    });
-                }
             }
             double d = (a + b);
             ObservableList<PieChart.Data> list4 = FXCollections.observableArrayList(
@@ -289,11 +275,54 @@ public class MainController implements Initializable {
                     }
                 });
             }
+            ObservableList<PieChart.Data> list2 = FXCollections.observableArrayList(
+                    new PieChart.Data("Kế hoạch", 1000),
+                    new PieChart.Data("Còn lại", 1000 - 900)
+            );
+            pieKehoach.setData(list2);
 
+            for (final PieChart.Data data : pieKehoach.getData()) {
+                data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
+                    }
+                });
+            }
+            lblTileloi.setText(String.valueOf(tiLe));
+            ObservableList<PieChart.Data> list3 = FXCollections.observableArrayList(
+                    new PieChart.Data("Hợp cách", 100 - tiLe),
+                    new PieChart.Data("Còn lại", tiLe)
+            );
+            pieHopcach.setData(list3);
+
+            for (final PieChart.Data data : pieHopcach.getData()) {
+                data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
+                    }
+                });
+            }
+            ObservableList<PieChart.Data> list1 = FXCollections.observableArrayList(
+                    new PieChart.Data("Lỗi vật tư ", 1),
+                    new PieChart.Data("Lỗi máy", 199)
+            );
+            pieThongtin.setData(list1);
+            for (final PieChart.Data data : pieThongtin.getData()) {
+                data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Tooltip.install(data.getNode(), new Tooltip(data.getName() + " " + data.getPieValue()));
+                    }
+                });
+            }
+            
+            getChartData();
         } catch (Exception e) {
             System.out.println("error " + e);
         }
-
+        start();
     }
 
     public void cancelQ() {
@@ -382,36 +411,6 @@ public class MainController implements Initializable {
         cbDh.setItems(option);
     }
 
-    /*public void selectBox(){
-    try {
-            connection c = new connection();
-            Connection connect = c.dbConnect();
-            st = connect.createStatement();
-            rs = st.executeQuery("SELECT *FROM`donhang` WHERE `tenDh`='"+cbDh.getSelectionModel().getSelectedItem()+"'");
-            while (rs.next()) {
-                lblDonhang.setText(rs.getString("tenDh"));
-                lblKehoach.setText(String.valueOf(rs.getInt("keHoach")));
-                txtTgbd.setText(rs.getString("tgBatdau"));
-            }
-        } catch (Exception e) {
-            System.out.println("error combo" + e);
-    
-   
-    }
-    try {
-            connection c = new connection();
-            Connection connect = c.dbConnect();
-            st = connect.createStatement();
-            rs = st.executeQuery("SELECT *FROM`donhang` WHERE `tenDh`='"+cbDh.getSelectionModel().getSelectedItem()+"'");
-            while (rs.next()) {
-                lblDonhang.setText(rs.getString("tenDh"));
-                lblKehoach.setText(String.valueOf(rs.getInt("keHoach")));
-                txtTgbd.setText(rs.getString("tgBatdau"));
-            }
-        } catch (Exception e) {
-            System.out.println("error combo" + e);
-        }
-}*/
     public void btnClick2() throws IOException {
         Stage a = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("dh.fxml"));
@@ -421,5 +420,102 @@ public class MainController implements Initializable {
         a.setScene(scene);
         a.show();
 
+    }
+
+    public void getChartData() {
+        connection c = new connection();
+        Connection connect = c.dbConnect();
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        try {
+            String sql1 = "SELECT `loi1`,`tgRa1` FROM `sanpham`";
+            st = connect.createStatement();
+            rs = st.executeQuery(sql1);
+            while (rs.next()) {
+                Double loi1 = rs.getDouble("loi1");
+                String tght1 = rs.getString("tgRa1");
+                series.getData().add(new XYChart.Data<>(tght1, loi1));
+                System.out.println("bongden.MainController.getChartData()");
+            }
+            barbieudo.getData().add(series);
+        } catch (Exception e) {
+        }
+    }
+    public  void stop(){
+          state=false;
+          state1=true;
+           Thread t= new Thread(){  
+        
+        public void run(){
+            for(;;){
+            if (state1==true) {
+                try {
+                    sleep(1);
+                    if (mil>1000) {
+                        mil=0;
+                        sec++;
+                    }
+                    if (sec>60) {
+                        sec=0;
+                        min++;
+                    }
+                    if (min>60) {
+                        min=0;
+                        hour++;
+                    }mil++;
+                   Platform.runLater(()->{ 
+                   lblTgdung.setText(hour+":"+min+":"+sec);
+                   }
+                   
+                   );
+                } catch (Exception e) {
+                }
+ 
+            }
+            else{
+            break;
+            }
+            }
+        }
+        };
+       t.start();
+    }
+    public  void start(){
+          state=true;
+          state1=false;
+           Thread t= new Thread(){  
+        
+        public void run(){
+            for(;;){
+            if (state==true) {
+                try {
+                    sleep(1);
+                    if (mil>1000) {
+                        mil=0;
+                        sec++;
+                    }
+                    if (sec>60) {
+                        sec=0;
+                        min++;
+                    }
+                    if (min>60) {
+                        min=0;
+                        hour++;
+                    }mil++;
+                   Platform.runLater(()->{ 
+                   lblTgchay.setText(hour+":"+min+":"+sec);
+                   }
+                   
+                   );
+                } catch (Exception e) {
+                }
+ 
+            }
+            else{
+            break;
+            }
+            }
+        }
+        };
+       t.start();
     }
 }
