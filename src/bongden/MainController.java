@@ -5,7 +5,12 @@
  */
 package bongden;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +32,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.sql.ResultSetMetaData;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -62,6 +68,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import static javax.swing.UIManager.getInt;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 /**
  * FXML Controller class
@@ -81,6 +95,14 @@ public class MainController implements Initializable {
     private TextField txtTgbd;
     @FXML
     private TextField txtTght;
+    @FXML
+    private TextField txtBq1;
+    @FXML
+    private TextField txtBq2;
+    @FXML
+    private TextField txtTd;
+    @FXML
+    private TextField txtTc;
     @FXML
     private Label lblSolo;
     @FXML
@@ -137,13 +159,17 @@ public class MainController implements Initializable {
     private BarChart<String, Double> barbieudo;
     public ObservableList<dhpro> data;
     public ObservableList<spProperty> sp;
-    public static int  sec=0;
-    public static int min=0;
-    public static int hour=0;
-    public static int mil=0;
-    public  Timeline timeline;
-    public static boolean state=true;
-    public static boolean state1=true;
+    public static int sec = 0;
+    public static int min = 0;
+    public static int hour = 0;
+    public static int mil = 0;
+    public static int sec1 = 0;
+    public static int min1 = 0;
+    public static int hour1 = 0;
+    public static int mil1 = 0;
+    public Timeline timeline;
+    public static boolean state = true;
+    public static boolean state1 = true;
     final ObservableList option = FXCollections.observableArrayList();
 
     private Connection con;
@@ -213,6 +239,9 @@ public class MainController implements Initializable {
         lblSlvao.setText("1000");
         lblSlhoanthanh.setText("6900");
         lblLoivtu.setText("0.5");
+        txtBq1.setText("869.61");
+        txtBq2.setText("1092");
+        txtTd.setText("8071");
         double tiLe = 2.5;
         double a = 0;
         double b = 0;
@@ -253,9 +282,11 @@ public class MainController implements Initializable {
                 loi5 = getloi();
                 diem5 = getDiem(loi5, lbl5);
                 tt5 = getTT(diem5);
+                txtTc.setText(String.valueOf(diem1 + diem2 + diem3 + diem4 + diem5));
                 String sql = "UPDATE  `sanpham` SET `tgRa1`='" + tgra1 + "', `loi1`='" + loi1 + "', `diem1`='" + diem1 + "', `trangThai1`='" + tt1 + "', `tgRa2`='" + tgra2 + "', `loi2`='" + loi2 + "', `diem2`='" + diem2 + "', `trangThai2`='" + tt2 + "'"
                         + ", `tgRa3`='" + tgra3 + "', `loi3`='" + loi3 + "', `diem3`='" + diem3 + "', `trangThai3`='" + tt3 + "', `tgRa4`='" + tgra4 + "', `loi4`='" + loi4 + "', `diem4`='" + diem4 + "', `trangThai4`='" + tt4 + "', `tgRa5`='" + tgra5 + "', `loi5`='" + loi5 + "', `diem5`='" + diem5 + "', `trangThai5`='" + tt5 + "' WHERE `idSp`='" + id + "'";
                 st = connect.createStatement();
+                st.executeUpdate(sql);
                 Thread.sleep(500);
                 System.out.println("ag");
                 lblSlhoanthanh.setText(String.valueOf(id));
@@ -317,7 +348,7 @@ public class MainController implements Initializable {
                     }
                 });
             }
-            
+
             getChartData();
         } catch (Exception e) {
             System.out.println("error " + e);
@@ -425,97 +456,183 @@ public class MainController implements Initializable {
     public void getChartData() {
         connection c = new connection();
         Connection connect = c.dbConnect();
-        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        XYChart.Series<String, Double> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Double> series3 = new XYChart.Series<>();
+        XYChart.Series<String, Double> series2 = new XYChart.Series<>();
+        XYChart.Series<String, Double> series4 = new XYChart.Series<>();
+        XYChart.Series<String, Double> series5 = new XYChart.Series<>();
         try {
-            String sql1 = "SELECT `loi1`,`tgRa1` FROM `sanpham`";
+            String sql1 = "SELECT `loi1`,`tgRa1`,`loi2`,`tgRa2`,`loi3`,`tgRa3`,`loi4`,`tgRa4`,`loi5`,`tgRa5` FROM `sanpham`";
             st = connect.createStatement();
             rs = st.executeQuery(sql1);
             while (rs.next()) {
                 Double loi1 = rs.getDouble("loi1");
                 String tght1 = rs.getString("tgRa1");
-                series.getData().add(new XYChart.Data<>(tght1, loi1));
+                Double loi2 = rs.getDouble("loi2");
+                String tght2 = rs.getString("tgRa2");
+                Double loi3 = rs.getDouble("loi3");
+                String tght3 = rs.getString("tgRa3");
+                Double loi4 = rs.getDouble("loi4");
+                String tght4 = rs.getString("tgRa4");
+                Double loi5 = rs.getDouble("loi5");
+                String tght5 = rs.getString("tgRa5");
+
+                series1.getData().add(new XYChart.Data<>(tght1, loi1));
+                series2.getData().add(new XYChart.Data<>(tght2, loi2));
+                series3.getData().add(new XYChart.Data<>(tght3, loi3));
+                series4.getData().add(new XYChart.Data<>(tght4, loi4));
+                series5.getData().add(new XYChart.Data<>(tght5, loi5));
                 System.out.println("bongden.MainController.getChartData()");
             }
-            barbieudo.getData().add(series);
+            barbieudo.getData().addAll(series1, series2, series3, series4, series5);
         } catch (Exception e) {
         }
     }
-    public  void stop(){
-          state=false;
-          state1=true;
-           Thread t= new Thread(){  
-        
-        public void run(){
-            for(;;){
-            if (state1==true) {
-                try {
-                    sleep(1);
-                    if (mil>1000) {
-                        mil=0;
-                        sec++;
+
+    public void stop() {
+        state = false;
+        state1 = true;
+        Thread t = new Thread() {
+
+            public void run() {
+                for (;;) {
+                    if (state1 == true) {
+                        try {
+                            sleep(1);
+                            if (mil1 > 1000) {
+                                mil1 = 0;
+                                sec1++;
+                            }
+                            if (sec1 > 60) {
+                                sec1 = 0;
+                                min1++;
+                            }
+                            if (min1 > 60) {
+                                min1 = 0;
+                                hour1++;
+                            }
+                            mil1++;
+                            Platform.runLater(() -> {
+                                lblTgdung.setText(hour1 + ":" + min1 + ":" + sec1);
+                            }
+                            );
+                        } catch (Exception e) {
+                        }
+
+                    } else {
+                        break;
                     }
-                    if (sec>60) {
-                        sec=0;
-                        min++;
-                    }
-                    if (min>60) {
-                        min=0;
-                        hour++;
-                    }mil++;
-                   Platform.runLater(()->{ 
-                   lblTgdung.setText(hour+":"+min+":"+sec);
-                   }
-                   
-                   );
-                } catch (Exception e) {
                 }
- 
             }
-            else{
-            break;
-            }
-            }
-        }
         };
-       t.start();
+        t.start();
     }
-    public  void start(){
-          state=true;
-          state1=false;
-           Thread t= new Thread(){  
-        
-        public void run(){
-            for(;;){
-            if (state==true) {
-                try {
-                    sleep(1);
-                    if (mil>1000) {
-                        mil=0;
-                        sec++;
+
+    public void start() {
+        state = true;
+        state1 = false;
+        Thread t = new Thread() {
+
+            public void run() {
+                for (;;) {
+                    if (state == true) {
+                        try {
+                            sleep(1);
+                            if (mil > 1000) {
+                                mil = 0;
+                                sec++;
+                            }
+                            if (sec > 60) {
+                                sec = 0;
+                                min++;
+                            }
+                            if (min > 60) {
+                                min = 0;
+                                hour++;
+                            }
+                            mil++;
+                            Platform.runLater(() -> {
+                                lblTgchay.setText(hour + ":" + min + ":" + sec);
+                            }
+                            );
+                        } catch (Exception e) {
+                        }
+
+                    } else {
+                        break;
                     }
-                    if (sec>60) {
-                        sec=0;
-                        min++;
-                    }
-                    if (min>60) {
-                        min=0;
-                        hour++;
-                    }mil++;
-                   Platform.runLater(()->{ 
-                   lblTgchay.setText(hour+":"+min+":"+sec);
-                   }
-                   
-                   );
-                } catch (Exception e) {
                 }
- 
             }
-            else{
-            break;
-            }
-            }
-        }
         };
-       t.start();
+        t.start();
     }
+
+    public void createCSV() {
+        connection c = new connection();
+        Connection connect = c.dbConnect();
+        try {
+            Statement st = connect.createStatement();
+            ResultSet rs = st.executeQuery("Select * from `sanpham`");
+            HSSFWorkbook wb = new HSSFWorkbook();
+            HSSFSheet sheet = wb.createSheet("Excel Sheet");
+            HSSFRow rowhead = sheet.createRow((short) 0);
+            rowhead.createCell((short) 0).setCellValue("idSp");
+            rowhead.createCell((short) 1).setCellValue("tgRa1");
+            rowhead.createCell((short) 2).setCellValue("loi1");
+            rowhead.createCell((short) 3).setCellValue("diem1");
+            rowhead.createCell((short) 4).setCellValue("trangThai1");
+            rowhead.createCell((short) 5).setCellValue("tgRa2");
+            rowhead.createCell((short) 6).setCellValue("loi2");
+            rowhead.createCell((short) 7).setCellValue("diem2");
+            rowhead.createCell((short) 8).setCellValue("trangThai2");
+            rowhead.createCell((short) 9).setCellValue("tgRa3");
+            rowhead.createCell((short) 10).setCellValue("loi3");
+            rowhead.createCell((short) 11).setCellValue("diem3");
+            rowhead.createCell((short) 12).setCellValue("trangThai3");
+            rowhead.createCell((short) 13).setCellValue("tgRa4");
+            rowhead.createCell((short) 14).setCellValue("loi4");
+            rowhead.createCell((short) 15).setCellValue("diem4");
+            rowhead.createCell((short) 16).setCellValue("trangThai4");
+            rowhead.createCell((short) 17).setCellValue("tgRa5");
+            rowhead.createCell((short) 18).setCellValue("loi5");
+            rowhead.createCell((short) 19).setCellValue("diem5");
+            rowhead.createCell((short) 20).setCellValue("trangThai5");
+
+            int index = 1;
+            while (rs.next()) {
+                HSSFRow row = sheet.createRow((short) index);
+                row.createCell((short) 0).setCellValue(rs.getString("idSp"));
+                row.createCell((short) 1).setCellValue(rs.getString("tgRa1"));
+                row.createCell((short) 2).setCellValue(rs.getString("loi1"));
+                row.createCell((short) 3).setCellValue(rs.getString("diem1"));
+                row.createCell((short) 4).setCellValue(rs.getString("trangThai1"));
+                row.createCell((short) 5).setCellValue(rs.getString("tgRa2"));
+                row.createCell((short) 6).setCellValue(rs.getString("loi2"));
+                row.createCell((short) 7).setCellValue(rs.getString("diem2"));
+                row.createCell((short) 8).setCellValue(rs.getString("trangThai2"));
+                row.createCell((short) 9).setCellValue(rs.getString("tgRa3"));
+                row.createCell((short) 10).setCellValue(rs.getString("loi3"));
+                row.createCell((short) 11).setCellValue(rs.getString("diem3"));
+                row.createCell((short) 12).setCellValue(rs.getString("trangThai3"));
+                row.createCell((short) 13).setCellValue(rs.getString("tgRa4"));
+                row.createCell((short) 14).setCellValue(rs.getString("loi4"));
+                row.createCell((short) 15).setCellValue(rs.getString("diem4"));
+                row.createCell((short) 16).setCellValue(rs.getString("trangThai4"));
+                row.createCell((short) 17).setCellValue(rs.getString("tgRa5"));
+                row.createCell((short) 18).setCellValue(rs.getString("loi5"));
+                row.createCell((short) 19).setCellValue(rs.getString("diem5"));
+                row.createCell((short) 20).setCellValue(rs.getString("trangThai5"));
+                index++;
+            }
+            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\DLC\\Desktop\\sanpham.xls");
+            wb.write(fileOut);
+            fileOut.close();
+            System.out.println("Data is saved in excel file.");
+            rs.close();
+            connect.close();
+        } catch (Exception e) {
+        }
+
+    }
+
 }

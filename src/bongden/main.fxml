@@ -271,7 +271,6 @@
                   <Label layoutX="2.0" layoutY="235.0" prefHeight="18.0" prefWidth="179.0" text="Năng suất bình quân" />
                   <Label layoutX="4.0" layoutY="331.0" prefHeight="18.0" prefWidth="179.0" text="Tốc độ băng truyền(bước/h)" />
                   <Label layoutX="3.0" layoutY="415.0" prefHeight="18.0" prefWidth="179.0" text="Độ tin cậy" />
-                  <Pane layoutX="5.0" layoutY="433.0" prefHeight="27.0" prefWidth="237.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="3.0" layoutY="479.0" prefHeight="18.0" prefWidth="179.0" text="Lỗi vượt định mức" />
                   <Label fx:id="lbl1" alignment="CENTER" layoutX="24.0" layoutY="505.0" prefHeight="27.0" prefWidth="30.0" text="1">
                      <font>
@@ -299,14 +298,15 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtTgbd" layoutX="4.0" layoutY="88.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <TextField layoutX="4.0" layoutY="261.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <TextField layoutX="100.0" layoutY="261.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <TextField layoutX="4.0" layoutY="349.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField fx:id="txtBq1" layoutX="4.0" layoutY="261.0" prefHeight="29.0" prefWidth="75.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField fx:id="txtBq2" layoutX="100.0" layoutY="261.0" prefHeight="29.0" prefWidth="129.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
+                  <TextField fx:id="txtTd" layoutX="4.0" layoutY="349.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                   <Label layoutX="7.0" layoutY="117.0" prefHeight="18.0" prefWidth="132.0" text="Hạn hoàn thành" />
                   <TextField fx:id="txtTght" layoutX="4.0" layoutY="135.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
-                  <Button layoutX="122.0" layoutY="14.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="IN BÁO CÁO" />
+                  <Button layoutX="122.0" layoutY="14.0" mnemonicParsing="false" onAction="#createCSV" prefHeight="41.0" prefWidth="97.0" text="IN BÁO CÁO" />
                   <Label fx:id="lblTgdung" layoutX="116.0" layoutY="190.0" prefHeight="17.0" prefWidth="120.0" />
                   <Label fx:id="lblTgchay" layoutX="9.0" layoutY="190.0" prefHeight="17.0" prefWidth="104.0" />
+                  <TextField fx:id="txtTc" layoutX="5.0" layoutY="433.0" prefHeight="25.0" prefWidth="223.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #d2e3ed;" />
                </children>
             </Pane>
             <Pane layoutX="265.0" layoutY="232.0" prefHeight="224.0" prefWidth="200.0" style="-fx-border-color: #EFEECB; -fx-border-insets: 1; -fx-border-style: solid; -fx-border-width: 2;">
@@ -330,7 +330,7 @@
                </image>
             </ImageView>
             <ComboBox fx:id="cbDh" layoutX="14.0" layoutY="195.0" prefWidth="150.0" promptText="Chọn đơn hàng" />
-            <BarChart fx:id="barbieudo" animated="false" barGap="10.0" categoryGap="20.0" layoutX="265.0" layoutY="472.0" prefHeight="296.0" prefWidth="678.0">
+            <BarChart fx:id="barbieudo" animated="false" categoryGap="8.0" layoutX="265.0" layoutY="472.0" legendVisible="false" prefHeight="296.0" prefWidth="678.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
