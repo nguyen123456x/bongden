@@ -330,14 +330,18 @@
                </image>
             </ImageView>
             <ComboBox fx:id="cbDh" layoutX="14.0" layoutY="195.0" prefWidth="150.0" promptText="Chọn đơn hàng" />
-            <BarChart fx:id="barbieudo" animated="false" categoryGap="8.0" layoutX="265.0" layoutY="472.0" legendVisible="false" prefHeight="296.0" prefWidth="678.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
+            <ScrollPane layoutX="265.0" layoutY="472.0">
+               <content>
+                  <BarChart fx:id="barbieudo" animated="false" legendVisible="false" prefHeight="296.0" prefWidth="678.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </content>

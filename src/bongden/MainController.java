@@ -188,7 +188,7 @@ public class MainController implements Initializable {
             try {
                 st = connect.createStatement();
                 rs = st.executeQuery("SELECT *FROM`donhang` WHERE `tenDh`='" + cbDh.getSelectionModel().getSelectedItem() + "'");
-                while (rs.next()) {
+                if (rs.next()) {
                     lblDonhang.setText(rs.getString("tenDh"));
                     lblKehoach.setText(String.valueOf(rs.getInt("keHoach")));
                     txtTgbd.setText(rs.getString("tgBatdau"));
@@ -212,7 +212,13 @@ public class MainController implements Initializable {
                             }
                         });
                     }
+                    barbieudo.getData().clear();
+                    pieHopcach.getData().clear();
+                    pieKehoach.getData().clear();
+                    pieThongtin.getData().clear();
+                    pieTyle.getData().clear();
                 }
+
             } catch (Exception a) {
                 System.out.println("error combo" + a);
             }
@@ -237,14 +243,16 @@ public class MainController implements Initializable {
         lblSolenh.setText("15920");
         lblSolo.setText("1800958298A");
         lblSlvao.setText("1000");
-        lblSlhoanthanh.setText("6900");
         lblLoivtu.setText("0.5");
         txtBq1.setText("869.61");
         txtBq2.setText("1092");
         txtTd.setText("8071");
+        start();
+
         double tiLe = 2.5;
         double a = 0;
         double b = 0;
+        int i = 0;
         try {
             String sql1 = "SELECT* FROM `sanpham`";
             st = connect.createStatement();
@@ -253,7 +261,6 @@ public class MainController implements Initializable {
                 int id = rs.getInt("idSp");
                 int diem1, diem2, diem3, diem4, diem5;
                 double loi1, loi2, loi3, loi4, loi5;
-
                 String tt1, tt2, tt3, tt4, tt5;
                 LocalTime tgra1, tgra2, tgra3, tgra4, tgra5;
                 tgra1 = LocalTime.now();
@@ -287,11 +294,40 @@ public class MainController implements Initializable {
                         + ", `tgRa3`='" + tgra3 + "', `loi3`='" + loi3 + "', `diem3`='" + diem3 + "', `trangThai3`='" + tt3 + "', `tgRa4`='" + tgra4 + "', `loi4`='" + loi4 + "', `diem4`='" + diem4 + "', `trangThai4`='" + tt4 + "', `tgRa5`='" + tgra5 + "', `loi5`='" + loi5 + "', `diem5`='" + diem5 + "', `trangThai5`='" + tt5 + "' WHERE `idSp`='" + id + "'";
                 st = connect.createStatement();
                 st.executeUpdate(sql);
-                Thread.sleep(500);
-                System.out.println("ag");
-                lblSlhoanthanh.setText(String.valueOf(id));
-
-            }
+                i++;
+                System.out.println("ag");}
+                XYChart.Series<String, Double> series1 = new XYChart.Series<>();
+                XYChart.Series<String, Double> series3 = new XYChart.Series<>();
+                XYChart.Series<String, Double> series2 = new XYChart.Series<>();
+                XYChart.Series<String, Double> series4 = new XYChart.Series<>();
+                XYChart.Series<String, Double> series5 = new XYChart.Series<>();
+                try {
+                    String sql2 = "SELECT `loi1`,`tgRa1`,`loi2`,`tgRa2`,`loi3`,`tgRa3`,`loi4`,`tgRa4`,`loi5`,`tgRa5` FROM `sanpham`";
+                    st = connect.createStatement();
+                    rs = st.executeQuery(sql2);
+                    while (rs.next()) {
+                       double loi1 = rs.getDouble("loi1");
+                        String tght1 = rs.getString("tgRa1");
+                       double loi2 = rs.getDouble("loi2");
+                        String tght2 = rs.getString("tgRa2");
+                      double  loi3 = rs.getDouble("loi3");
+                        String tght3 = rs.getString("tgRa3");
+                      double  loi4 = rs.getDouble("loi4");
+                        String tght4 = rs.getString("tgRa4");
+                     double   loi5 = rs.getDouble("loi5");
+                        String tght5 = rs.getString("tgRa5");
+                        series1.getData().add(new XYChart.Data<>(tght1, loi1));
+                        series2.getData().add(new XYChart.Data<>(tght2, loi2));
+                        series3.getData().add(new XYChart.Data<>(tght3, loi3));
+                        series4.getData().add(new XYChart.Data<>(tght4, loi4));
+                        series5.getData().add(new XYChart.Data<>(tght5, loi5));
+                        System.out.println("bongden.MainController.getChartData()");
+                    }
+                    barbieudo.getData().addAll(series1, series2, series3, series4, series5);
+                }catch (Exception e) {
+                }
+            
+            lblSlhoanthanh.setText(String.valueOf(i));
             double d = (a + b);
             ObservableList<PieChart.Data> list4 = FXCollections.observableArrayList(
                     new PieChart.Data("k1 lắp ráp ", a / d),
@@ -307,8 +343,8 @@ public class MainController implements Initializable {
                 });
             }
             ObservableList<PieChart.Data> list2 = FXCollections.observableArrayList(
-                    new PieChart.Data("Kế hoạch", 1000),
-                    new PieChart.Data("Còn lại", 1000 - 900)
+                    new PieChart.Data("Kế hoạch", Integer.valueOf(lblKehoach.getText())),
+                    new PieChart.Data("Hoàn thành",i)
             );
             pieKehoach.setData(list2);
 
@@ -349,11 +385,9 @@ public class MainController implements Initializable {
                 });
             }
 
-            getChartData();
         } catch (Exception e) {
             System.out.println("error " + e);
         }
-        start();
     }
 
     public void cancelQ() {
@@ -453,7 +487,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void getChartData() {
+    /* public void getChartData() {
         connection c = new connection();
         Connection connect = c.dbConnect();
         XYChart.Series<String, Double> series1 = new XYChart.Series<>();
@@ -487,8 +521,7 @@ public class MainController implements Initializable {
             barbieudo.getData().addAll(series1, series2, series3, series4, series5);
         } catch (Exception e) {
         }
-    }
-
+    }*/
     public void stop() {
         state = false;
         state1 = true;
